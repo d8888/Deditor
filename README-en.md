@@ -17,12 +17,12 @@ Deditor can help word processing software (such as the Windows-built-in notepad,
 - [Contributing](#contributing)
 - [Disclaimer](#disclaimer)
 - [License](#license)
-- [3rd party licenses](#3rd party licenses)
+- [3rd-party-licenses](#3rd-party-licenses)
 
 
 ## Background
 
-"Syntax highlighting" can help users quickly see the key points of a large number of texts, reduce the burden on users, and reduce the chance of missed and misread. However, many ancient software based on outdated technologies (such as Visual Basic 6 and textarea controls) may not necessarily allow modification of the source code to add this feature for technical reasons.
+"Syntax highlighting" can help users quickly see the key points of a large number of texts, reduce the burden on users, and reduce the chance of missing and misreading vital information. However, many ancient software based on outdated technologies (such as Visual Basic 6 and textarea controls) may not necessarily allow modification of the source code to add this feature for technical reasons.
 
 The author works in non-IT industry, and has observed that such condition is common in software designed for corporate internal-use in non-IT industries. This hobby project is developed hoping to solve this common problem.
 
@@ -137,7 +137,7 @@ Please refer to other documents carefully, for other statements
 
 Please see [LICENSE.md](LICENSE.md)
 
-## 3rd party licenses
+## 3rd-party-licenses
 
 Please see [3rd-party-licenses.md](3rd-party-licenses.md)
 

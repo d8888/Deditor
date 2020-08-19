@@ -16,7 +16,7 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
 - [Contributing](#contributing)
 - [Disclaimer](#disclaimer)
 - [License](#license)
-- [3rd party licenses](#3rd party licenses)
+- [3rd-party-licenses](#3rd-party-licenses)
 
 
 ## Background
@@ -125,7 +125,7 @@ Deditor 基本由腳本組成，只有由 Rust 編寫的 editorsrv.exe 需要額
 
 請參閱 [LICENSE.md](LICENSE.md)
 
-## 3rd party licenses
+## 3rd-party-licenses
 
 請參閱 [3rd-party-licenses.md](3rd-party-licenses.md)
 
