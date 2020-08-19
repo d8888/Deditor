@@ -74,14 +74,14 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
 * colorrule.txt 可設定「哪些關鍵字可變色」和「變甚麼顏色」，內附 colorrule.txt 已內建可參考關鍵字，檔案格式如下：
 
 ```
-					 ; 分號後面可加註解
-					 ; ##rrggbb 表示此行後變這個顏色（本例為 FF0000，紅色）
-##FF0000			 ; 後綴 "#nb#" 表示不要套粗體，例如 ##444444#nb#
-tumor				 ; tumor 關鍵字不分大小寫一律變紅色
+                     ; 分號後面可加註解
+                     ; ##rrggbb 表示此行後變這個顏色（本例為 FF0000，紅色）
+##FF0000             ; 後綴 "#nb#" 表示不要套粗體，例如 ##444444#nb#
+tumor                ; tumor 關鍵字不分大小寫一律變紅色
 reg:prominent.*hilum ; "reg:" 前綴，表示後面是 regular expression，配對不分大小寫
-					 ; prominent right hilum、prominent left hilum.... 都會變紅色
+                     ; prominent right hilum、prominent left hilum.... 都會變紅色
 
-##0000FF			 ; 這行以後的關鍵字顏色設定為 0000FF （藍色）
+##0000FF             ; 這行以後的關鍵字顏色設定為 0000FF （藍色）
 ```
 
 

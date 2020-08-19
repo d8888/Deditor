@@ -79,14 +79,14 @@ The author works in non-IT industry, and has observed that such condition is com
 
 
 ```
-					 ; text after semicolon are comment
-					 ; ##rrggbb means apply this color for keywords after this line (in this case, FF0000, red)
-##FF0000			 ; The suffix "#nb#" means "no bold", for example ##444444#nb#
-tumor				 ; "tumor" will turn red regardless of case
+                     ; text after semicolon are comment
+                     ; ##rrggbb means apply this color for keywords after this line (in this case, FF0000, red)
+##FF0000             ; The suffix "#nb#" means "no bold", for example ##444444#nb#
+tumor                ; "tumor" will turn red regardless of case
 reg:prominent.*hilum ; The "reg:" prefix indicates that the following is a regular expression. The matching is case insensitive
-					 ; prominent right hilum、prominent left hilum.... all turn red
+                     ; prominent right hilum、prominent left hilum.... all turn red
 
-##0000FF			 ; The keyword after this line will be colored to 0000FF (blue)
+##0000FF             ; The keyword after this line will be colored to 0000FF (blue)
 ```
 
 
