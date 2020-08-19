@@ -1,0 +1,10 @@
+{
+  "name": "Frameless Window Sample",
+  "description": "Chrome platform app.",
+  "version": "0.2",
+  "app": {
+    "background": {
+		"scripts": ["background.js"]
+	}
+  }
+}

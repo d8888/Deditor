@@ -1,0 +1,188 @@
+; Negate rules, ignore things like "No lung consolidation." "No obvious bony fracture."
+; Careful not to obscured "Nodular lesion"
+##444444#nb#
+; this rule is to handle things like: No obvious change of LLL nodule
+; so that the "nodule" can be colored
+reg:^No.*(change|progression|enlargement)
+reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9]).*(\.|$)
+
+
+
+;most important rule
+##FF0000
+pathologic fracture
+mediastinum widening
+mediastinal widening
+reg:widening of.*(mediastinum|mediasitnum)
+free air
+pneumoperitoneum
+metastatic lymphadenopathy
+
+
+;less important rule
+##FF0000
+fullness
+fibrocalcified
+nodule
+nodular
+mass
+tumor
+metastasis
+metastases
+metastatic
+carcinoma
+lymphoma
+leukeumia
+sarcoma
+myeloma
+cancer
+consolidation
+consolidative
+pathologic
+aneurysm
+osteolytic
+osteoblastic
+osteosclerotic
+lytic
+pneumothora
+hydrothora
+hemothora
+malignant
+malignancy
+seeding
+mycobacteria
+reg:(?<![a-zA-Z0-9])TB(?![a-zA-Z0-9])
+reg:prominent.*hilum
+reg:(?<![a-zA-Z0-9])sclerotic(?![a-zA-Z0-9])
+tracheal deviation
+tracheal shifting
+mediastinum shift
+focal lucency
+focal lucencies
+foreign body
+foreign bodies
+embolism
+thrombus
+thrombosis
+
+; interval change
+##cc6600
+enlarging
+enlarge
+enlargement
+shrinkage
+worsening
+progressing
+progressive
+progression
+stationary
+stable
+no change
+limited interval change
+limited change
+improving
+improvement
+improved
+regressing
+regressive
+regression
+interval change
+
+
+##0000FF
+ground glass
+hydrocalyx
+hydrocalyces
+hydronephrosis
+hydroureteronephrosis 
+ascites
+fracture
+collapse
+AVN
+avascular necrosis
+deformity
+subluxation
+dislocation
+diastasis
+granuloma
+effusion
+lymphadenopathy
+thickening
+lesion
+infarct
+
+; specific lung location
+##0000FF
+retrocardiac
+reg:(left|right|bilateral|bil)?\s*(upper|middle|lower)\s*lung\s*(zone)?
+reg:(?<![a-zA-Z0-9])(L|R)(U|M|L)L(?![a-zA-Z0-9])
+reg:(Lt|Rt|left|right) lung
+
+; specific spine location
+reg:(?<![a-zA-Z0-9])((C|T|L|S)([0-9])+)(?![a-zA-Z0-9])
+
+##295c93
+renal stone
+gallstone
+gallbladder stone
+CBD stone
+IHD stone
+ureter stone
+bladder stone
+stones
+stone
+soft tissue
+calcification
+calcified
+calcific
+
+
+
+; catheter section
+##993366
+chest tube
+central venous catheter
+pigtail
+pig tail
+catheter
+nasogastric
+chemoport
+CAPD
+PICC
+port-A
+port catheter
+double-lumen
+double lumen
+endotracheal
+drainage
+sternotomy
+metallic
+reg:(?<![a-zA-Z0-9])stent(ing)?(?![a-zA-Z0-9])
+PTCD
+PTGBD
+PCN
+suture anchor
+IABP
+ECMO
+clip
+staple
+wire
+pacemaker
+intrauterine device
+IVC filter
+tracheostomy
+VP shunt
+reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])perm.?cath
+reg:(?<![a-zA-Z0-9])ETT(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])IUD(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])OG(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])NG(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])ND(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])NJ(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])JJ(?![a-zA-Z0-9])
+reg:(?<![a-zA-Z0-9])double.J(?![a-zA-Z0-9])
+reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])CV(C|P)(?![a-zA-Z0-9])
+
+#date
+##993366
+reg:(\d{1,4}[\/-]){1,2}\d{1,4}(?=$|\D+)

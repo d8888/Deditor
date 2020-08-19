@@ -1,0 +1,75 @@
+<head>
+<title>deditormain====</title>
+
+<link href="codemirror/lib/codemirror.css" rel="stylesheet"></link>
+<link href="codemirror/addon/dialog/dialog.css" rel="stylesheet"></link>
+<script src="codemirror/lib/codemirror.js"></script>
+<script src="codemirror/mode/javascript/javascript.js"></script>
+<script src="codemirror/addon/search/search.js"></script>
+<script src="codemirror/addon/dialog/dialog.js"></script>
+<script src="exregex.js"></script>
+<script src="codemirror/addon/edit/matchbrackets.js"></script>
+<script src="codemirror/addon/search/searchcursor.js"></script>
+<script src="codemirror/addon/display/fullscreen.js"></script>
+<script src="./config.js"></script>
+<script src="./loadeditor.js"></script>
+<script src="./tempjson.js"></script>
+<script src="./sweetalert2.js"></script>
+<script src="worker.js"></script>
+
+<link href="codemirror/theme/cobalt.css" rel="stylesheet"></link>
+<link href="codemirror/theme/3024-day.css" rel="stylesheet"></link>
+<link href="temp.css" rel="stylesheet"></link>
+<style>
+  @font-face {
+    font-family: PT Mono;
+	unicode-range: U+00-024F;  /* Latin, Latin1 Sup., Ext-A, Ext-B */
+    src: url(PTMono-Regular.ttf);
+  }
+  @font-face {
+    font-family: Noto Sans TC;
+    src: url(NotoSansTC-Regular.otf);
+  }
+
+  body{
+	margin: 0px;	
+	border: 1px solid #000000;
+  }
+  .CodeMirror {
+	font-family: 'PT Mono','Noto Sans TC', monospace;
+	font-weight: 550
+	}
+  .CodeMirror pre { padding-left: 7px; line-height: 1.25; }
+  
+  
+  .CodeMirror-hscrollbar {
+    display: none !important;
+  }
+  .CodeMirror-selected {background:#E61410 !important;}
+  
+  .swal2-html-container {
+	text-align: left;
+  }
+  
+</style>
+<!-- 
+  .CodeMirror-scroll { max-height: 23ch; } 
+  .CodeMirror {
+	width: 80ch; 
+	height: auto; 
+	border: 0px solid #ddd; 
+	font-family: Arial, monospace;
+	font-size: 16px;
+	}
+	  .CodeMirror-wrap pre {
+    word-break: break-word;
+  }
+	
+-->
+</head>
+<body>
+<pre>
+<textarea id="code_input" rows="50">
+</textarea>
+</pre>
+</body>
