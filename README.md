@@ -1,4 +1,4 @@
-# Deditor ReadMe
+# Video demo
 
 [![影片示範](https://img.youtube.com/vi/y0-UroAVPw8/0.jpg)](https://youtu.be/y0-UroAVPw8)
 
