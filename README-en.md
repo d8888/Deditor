@@ -32,6 +32,7 @@ The author works in non-IT industry, and has observed that such condition is com
 1. Confirm that Google Chrome browser and Autohotkey are installed on the computer.
 2. Download/Extract Deditor to a new folder. Copy config.ahk.template to config.ahk
 3. Execute Windows-built-in notepad (Start -> Execute -> notepad.exe in Windows 7)
+   Using Deditor on program other than notepad requires modifying config.ahk.
 4. Execute showeditor.ahk
 5. Enter keywords such as "nodule", "stone", "free air", etc., and see the keywords automatically change color
 
@@ -45,7 +46,7 @@ The author works in non-IT industry, and has observed that such condition is com
 
 ### Install
 
-1. Before using Deditor for the first time, you need to change settings. First open the word processing software you wish to apply syntax highlighting, and use Autohotkey's built-in Window Spy to find out classNN of the control that requires syntax highlighting. Then modify config.ahk, set targetExeName and targetControl to the executable file name and control item classNN. Take the built-in Windows notebook as an example, the settings are as follows:
+1. Before using Deditor on a new program for the first time, you need to change settings. First open the word processing software you wish to apply syntax highlighting, and use Autohotkey's built-in Window Spy to find out classNN of the control that requires syntax highlighting. Then modify config.ahk, set targetExeName and targetControl to the executable file name and control item classNN. Take the built-in Windows notebook as an example, the settings are as follows:
 
 ```
 	targetExeName := "notepad.exe"
@@ -100,7 +101,7 @@ reg:prominent.*hilum ; The "reg:" prefix indicates that the following is a regul
 
 
 ```
-.					Root directory, including main scripts and dependencies
+.                   Root directory, including main scripts and dependencies
 │  
 ├─assets			Front-end related resources, including HTML, JS, webfont
 │  └─codemirror
