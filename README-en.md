@@ -31,8 +31,7 @@ The author works in non-IT industry, and has observed that such condition is com
 
 1. Confirm that Google Chrome browser and Autohotkey are installed on the computer.
 2. Download/Extract Deditor to a new folder. Copy config.ahk.template to config.ahk
-3. Execute Windows-built-in notepad (Start -> Execute -> notepad.exe in Windows 7)
-   Using Deditor on program other than notepad requires modifying config.ahk.
+3. Execute Windows-built-in notepad (Start -> Execute -> notepad.exe in Windows 7). Using Deditor on program other than notepad requires modifying config.ahk.
 4. Execute showeditor.ahk
 5. Enter keywords such as "nodule", "stone", "free air", etc., and see the keywords automatically change color
 

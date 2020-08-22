@@ -30,8 +30,7 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
 
 1. 確認電腦已安裝 Google Chrome 瀏覽器和 Autohotkey。
 2. 把 Deditor 下載至任意目錄。把 config.ahk.template 複製為 config.ahk
-3. 執行 Windows 內建記事本（Windows 7 為開始 -> 執行 -> notepad.exe）
-   要套用在記事本外的程式，必須修改 config.ahk。
+3. 執行 Windows 內建記事本（Windows 7 為開始 -> 執行 -> notepad.exe）。   要套用在記事本外的程式，必須修改 config.ahk。
 4. 執行 showeditor.ahk
 5. 輸入 nodule、stone、free air 等關鍵字，可看到關鍵字自動變色
 
