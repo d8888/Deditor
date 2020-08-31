@@ -224,6 +224,12 @@ function replaceAberrantCrLf(input)
 	return input
 }
 
+function packRedundantSpace(input)
+{
+	input = input.replace(/\ {2,}/g, " ");
+	return input;
+}
+
 function setContent(newContent)
 {
 	var decoded = atou(newContent);
@@ -566,6 +572,9 @@ function rewarpSelection()
 		if(rst.length>0) rst += " ";
 		rst = rst + line.slice(countBeginSpaces(line));
 	}
+	
+	rst = packRedundantSpace(rst);
+	
 	editor.getDoc().replaceSelection(rst);
 }
 

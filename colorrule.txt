@@ -4,9 +4,13 @@
 ; this rule is to handle things like: No obvious change of LLL nodule
 ; so that the "nodule" can be colored
 reg:^No.*(change|progression|enlargement)
-reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9]).*(\.|$)
+reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9])[^\.]*(\.|$)?
+reg:(^|\.)unremarkable[^\.,]*(\.|$)?
+reg:[^.]*unremarkable(\.|$)?
 
-
+; 沒填寫的「空白」
+##B6003B
+_
 
 ;most important rule
 ##FF0000
@@ -114,6 +118,9 @@ infarct
 ; specific lung location
 ##0000FF
 retrocardiac
+perihilar
+suprahilar
+infrahilar
 reg:(left|right|bilateral|bil)?\s*(upper|middle|lower)\s*lung\s*(zone)?
 reg:(?<![a-zA-Z0-9])(L|R)(U|M|L)L(?![a-zA-Z0-9])
 reg:(Lt|Rt|left|right) lung
@@ -183,6 +190,6 @@ reg:(?<![a-zA-Z0-9])JJ(?![a-zA-Z0-9])
 reg:(?<![a-zA-Z0-9])double.J(?![a-zA-Z0-9])
 reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])CV(C|P)(?![a-zA-Z0-9])
 
-#date
+# date or breast location
 ##993366
 reg:(\d{1,4}[\/-]){1,2}\d{1,4}(?=$|\D+)
