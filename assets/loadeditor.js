@@ -245,6 +245,14 @@ function setContent(newContent)
 	
 	editor.getDoc().replaceRange(decoded, {line:0, ch:0}, exy);
 	
+	// the replaceRange will make doc blank before inserting new content
+	// this prevent user from seeing blank doc when performing undo
+	var last = getLastChangeHistory();
+	if(last)
+	{
+		last["onemoreskip"]=true;
+	}
+	
 	contentChanged = true;
 	
 	return;
