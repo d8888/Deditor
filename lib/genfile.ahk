@@ -62,27 +62,7 @@ GenJS(coloraray, outfile)
 	FileAppend, %jscontent%, %outfile%
 }
 
-GenMasterCSS(workfolder, searchfolder, outfile)
-{
-	curdir:=A_WorkingDir
-	SetWorkingDir, %workfolder%
-	
-	cmd:="del """ outfile """"
-	RunWait,%ComSpec% /c %cmd%,,Hide
-	
-	folder := rtrim(searchfolder, "\") "\"
-	allcss:= folder "*.css"
-	
-	Loop, Files, %allcss%
-	{
-		folder2:=rtrim(searchfolder, "\") "/"
-		val:= folder2 A_LoopFileName
-		val:= "@import url(" val ");`n"
-		FileAppend , %val%, %outfile%
-	}
-	
-	SetWorkingDir, %curdir%
-}
+
 
 ProcessFilter(inputfile)
 {

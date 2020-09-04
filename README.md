@@ -71,17 +71,19 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
 
 ### Configuration
 
-* colorrule.txt 可設定「哪些關鍵字可變色」和「變甚麼顏色」，內附 colorrule.txt 已內建可參考關鍵字，檔案格式如下：
+* colorrule.txt 可運用 css 設定「哪些關鍵字可變色」和「變甚麼顏色」，內附 colorrule.txt 已內建可參考關鍵字，檔案格式如下：
+* 布景主題在 config.ahk 指定
+* CSS 設定檔可在 assets/theme 找到。
 
 ```
                      ; 分號後面可加註解
-                     ; ##rrggbb 表示此行後變這個顏色（本例為 FF0000，紅色）
-##FF0000             ; 後綴 "#nb#" 表示不要套粗體，例如 ##444444#nb#
+                     ; ##classname 表示後續文字套 cm-classname 的 CSS style
+##critical           ; 例如 ##critical 表示後續文字套 cm-critical CSS style
 tumor                ; tumor 關鍵字不分大小寫一律變紅色
 reg:prominent.*hilum ; "reg:" 前綴，表示後面是 regular expression，配對不分大小寫
                      ; prominent right hilum、prominent left hilum.... 都會變紅色
 
-##0000FF             ; 這行以後的關鍵字顏色設定為 0000FF （藍色）
+##info1              ; 這行以後的關鍵字，套用 cm-info1 CSS class
 ```
 
 
@@ -96,7 +98,8 @@ reg:prominent.*hilum ; "reg:" 前綴，表示後面是 regular expression，配�
 .                   根目錄，包含主要腳本和依賴工具
 │  
 ├─assets			前端相關資源，包含 HTML、JS、web font
-│  └─codemirror
+│  ├─codemirror
+│  └─theme          布景主題
 ├─editsrv  			editorsrv.exe 原始碼，透過 websocket 協助 Chrome 與「外界」溝通
 └─lib				其他必要 Autohotkey 腳本
 ```

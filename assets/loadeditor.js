@@ -46,12 +46,7 @@ window.onload = function() {
 	setInterval(function(){ syncTextToTarget(); }, 80);
 	setInterval(function(){ syncCaretPosToTarget(); }, 80);
 
-	if(defaultEditorTheme && defaultEditorTheme!="")
-	{
-		editor.setOption("theme", defaultEditorTheme);
-	}
-	
-	
+		
 	
 
 	signalInitComplete(1);

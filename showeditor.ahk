@@ -16,8 +16,10 @@ DeleteTempFiles()
 DeleteChromeTempFolder()
 
 ; Generate color rules
+css:="@import url(theme/" editorTheme ".css);`n"
+FileAppend %css%,assets\temp.css
+
 coloraray:=ProcessFilter("colorrule.txt")
-GenMasterCSS("assets", "theme", "temp.css")
 GenJS(coloraray, "assets\tempjson.js")
 
 ; Tray for debug
