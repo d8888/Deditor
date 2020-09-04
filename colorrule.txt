@@ -8,6 +8,8 @@ reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9])[^\.]*(\.|$)?
 reg:(^|\.)unremarkable[^\.,]*(\.|$)?
 reg:[^.]*unremarkable(\.|$)?
 
+
+
 ; 沒填寫的「空白」
 ##B6003B
 _
@@ -127,6 +129,10 @@ reg:(Lt|Rt|left|right) lung
 
 ; specific spine location
 reg:(?<![a-zA-Z0-9])((C|T|L|S)([0-9])+)(?![a-zA-Z0-9])
+
+; descriptive location
+reg:(?<![a-zA-Z0-9])(Lt|Rt|left|right)(?![a-zA-Z0-9])
+
 
 ##295c93
 renal stone
