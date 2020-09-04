@@ -105,7 +105,7 @@ reg:prominent.*hilum ; The "reg:" prefix indicates that the following is a regul
 │  
 ├─assets			Front-end related resources, including HTML, JS, webfont
 │  ├─codemirror
-│  └─theme          user-defined themes
+│  └─theme			user-defined themes
 ├─editsrv  			editorsrv.exe source code, which helps Chrome communicate with the "outside world" through websocket
 └─lib				Other necessary Autohotkey scripts
 ```

@@ -99,7 +99,7 @@ reg:prominent.*hilum ; "reg:" 前綴，表示後面是 regular expression，配�
 │  
 ├─assets			前端相關資源，包含 HTML、JS、web font
 │  ├─codemirror
-│  └─theme          布景主題
+│  └─theme			布景主題
 ├─editsrv  			editorsrv.exe 原始碼，透過 websocket 協助 Chrome 與「外界」溝通
 └─lib				其他必要 Autohotkey 腳本
 ```
