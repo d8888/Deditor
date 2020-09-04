@@ -1,0 +1,46 @@
+.CodeMirror {
+	background-color: #FFFFFF !important;
+	color: #000000 !important;
+	border: none;
+}
+
+.CodeMirror-cursor {
+	border-left: solid thin #000000;
+}
+
+.CodeMirror-focused .CodeMirror-selected {
+	background: #E61410; !important;
+}
+
+span.cm-critical {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+span.cm-intervalchange {
+	color: #cc6600;
+	font-weight: bold;
+}
+
+span.cm-info {
+	color: #0000FF;
+	font-weight: bold;
+}
+
+span.cm-info2 {
+	color: #295c93;
+	font-weight: bold;
+}
+
+span.cm-info3 {
+	color: #993366;
+	font-weight: bold;
+}
+
+span.cm-neglect {
+	color: #444444;
+}
+
+span.cm-blank {
+	color: #FF0000;
+}

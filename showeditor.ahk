@@ -9,9 +9,15 @@
 
 ; Globals
 
+
+
+; delete temp files
+DeleteTempFiles()
+DeleteChromeTempFolder()
+
 ; Generate color rules
 coloraray:=ProcessFilter("colorrule.txt")
-GenCSS(coloraray, "assets\temp.css")
+GenMasterCSS("assets", "theme", "temp.css")
 GenJS(coloraray, "assets\tempjson.js")
 
 ; Tray for debug
@@ -29,9 +35,6 @@ if not SanityCheck()
 	ExitApp
 }
 
-; delete temp files
-DeleteTempFiles()
-DeleteChromeTempFolder()
 
 ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
 HwndTargetControlParent := DllCall("user32\GetAncestor", Ptr,HwndTargetControl, UInt,1, Ptr)

@@ -1,6 +1,6 @@
 ; Negate rules, ignore things like "No lung consolidation." "No obvious bony fracture."
 ; Careful not to obscured "Nodular lesion"
-##444444#nb#
+##neglect
 ; this rule is to handle things like: No obvious change of LLL nodule
 ; so that the "nodule" can be colored
 reg:^No.*(change|progression|enlargement)
@@ -11,11 +11,11 @@ reg:[^.]*unremarkable(\.|$)?
 
 
 ; 沒填寫的「空白」
-##B6003B
+##blank
 _
 
 ;most important rule
-##FF0000
+##critical
 pathologic fracture
 mediastinum widening
 mediastinal widening
@@ -26,7 +26,7 @@ metastatic lymphadenopathy
 
 
 ;less important rule
-##FF0000
+##critical
 fullness
 fibrocalcified
 nodule
@@ -72,7 +72,7 @@ thrombus
 thrombosis
 
 ; interval change
-##cc6600
+##intervalchange
 enlarging
 enlarge
 enlargement
@@ -95,7 +95,7 @@ regression
 interval change
 
 
-##0000FF
+##info
 ground glass
 hydrocalyx
 hydrocalyces
@@ -118,7 +118,7 @@ lesion
 infarct
 
 ; specific lung location
-##0000FF
+##info
 retrocardiac
 perihilar
 suprahilar
@@ -134,7 +134,7 @@ reg:(?<![a-zA-Z0-9])((C|T|L|S)([0-9])+)(?![a-zA-Z0-9])
 reg:(?<![a-zA-Z0-9])(Lt|Rt|left|right)(?![a-zA-Z0-9])
 
 
-##295c93
+##info2
 renal stone
 gallstone
 gallbladder stone
@@ -152,7 +152,7 @@ calcific
 
 
 ; catheter section
-##993366
+##info3
 chest tube
 central venous catheter
 pigtail
@@ -197,5 +197,5 @@ reg:(?<![a-zA-Z0-9])double.J(?![a-zA-Z0-9])
 reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])CV(C|P)(?![a-zA-Z0-9])
 
 # date or breast location
-##993366
+##info3
 reg:(\d{1,4}[\/-]){1,2}\d{1,4}(?=$|\D+)

@@ -126,6 +126,7 @@ function searchUnderscore(pos)
 	}
 	
 	var cursor = editor.getSearchCursor(keyword , pos, {caseFold: true, multiline: true});
+	console.log(cursor);
     if(cursor.find(backward)){ //move to that position.
 		editor.setSelection(cursor.from(), cursor.to());
 		editor.scrollIntoView({from: cursor.from(), to: cursor.to()}, 20);

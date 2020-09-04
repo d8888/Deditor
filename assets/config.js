@@ -3,6 +3,6 @@ var maxColumnPerLine = 80;
 
 // replace empty string with theme name if needed
 // example: 
-//		var defaultCodemirrorTheme = "dracula";	
-var defaultEditorTheme = "";	
+//		var defaultCodemirrorTheme = "default";	
+var defaultEditorTheme = "default";	
 

@@ -1,55 +1,3 @@
-GetStyle(input)
-{
-	nowcolor := SubStr(input, 1 , 6)
-	isBold := not InStr(input, "#nb#")
-	stylepostfix:="c" nowcolor
-	if(not isBold)
-	{
-		stylepostfix:=stylepostfix "nb"
-	}
-	
-	return Array(nowcolor, isBold, stylepostfix)
-}
-
-GenCSS(coloraray, outfile)
-{
-	cmd:="del """ outfile """"
-	RunWait,%ComSpec% /c %cmd%,,Hide
-	
-	written:=""
-	
-	for key in coloraray
-	{
-		tmp:=GetStyle(coloraray[key][1])
-		nowcolor := tmp[1]
-		isBold := tmp[2]
-		stylepost:= tmp[3]
-		
-		if(InStr(written, nowcolor))
-		{
-			continue
-		}
-		
-		written:=written nowcolor "##"
-		style=
-		(
-.cm-STYLEPOST {
-  color: TRUECOLOR;
-  font-weight:bold;
-}
-
-		)
-		style:=StrReplace(style, "TRUECOLOR" , nowcolor)
-		style:=StrReplace(style, "STYLEPOST" , stylepost)
-		if(not isBold)
-		{
-			style:=StrReplace(style, "font-weight:bold;" , "font-weight:normal;")
-		}
-		
-		FileAppend, %style%, %outfile%
-	}
-}
-
 EscapeReg(line)
 {
 	special:=".()[]|{}*+?&$/-\"
@@ -104,8 +52,7 @@ GenJS(coloraray, outfile)
 		
 		
 		jsline:=StrReplace(jsline, "KEYWORD" , kw)
-		tmp:=GetStyle(coloraray[key][1])
-		stylepost:= tmp[3]
+		stylepost:= coloraray[key][1]
 		jsline:=StrReplace(jsline, "STYLE" , stylepost)
 		
 		lines:=lines jsline
@@ -113,6 +60,28 @@ GenJS(coloraray, outfile)
 	jscontent:= "var grammar = [`n" lines "`n];"
 	
 	FileAppend, %jscontent%, %outfile%
+}
+
+GenMasterCSS(workfolder, searchfolder, outfile)
+{
+	curdir:=A_WorkingDir
+	SetWorkingDir, %workfolder%
+	
+	cmd:="del """ outfile """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
+	
+	folder := rtrim(searchfolder, "\") "\"
+	allcss:= folder "*.css"
+	
+	Loop, Files, %allcss%
+	{
+		folder2:=rtrim(searchfolder, "\") "/"
+		val:= folder2 A_LoopFileName
+		val:= "@import url(" val ");`n"
+		FileAppend , %val%, %outfile%
+	}
+	
+	SetWorkingDir, %curdir%
 }
 
 ProcessFilter(inputfile)
@@ -129,7 +98,7 @@ ProcessFilter(inputfile)
 	StringSplit, rulelines, rulefile,`n
 	
 	; init coloraray
-	nowcolor:="000000"
+	nowstyle:=""
 	
 	Loop, %rulelines0%
 	{
@@ -149,11 +118,11 @@ ProcessFilter(inputfile)
 			continue
 		}
 	
-		;is this a color?
+		;is this a style name?
 		StringLeft, tmp, linecontent, 2
 		if tmp=##
 		{
-			nowcolor:=trim(SubStr(linecontent, 3), " `t`r`n")
+			nowstyle:=trim(SubStr(linecontent, 3), " `t`r`n")
 			continue
 		}
 		
@@ -162,14 +131,14 @@ ProcessFilter(inputfile)
 		if tmp=reg:
 		{
 			linecontent:=SubStr(linecontent, 5)
-			coloraray.insert(Array(nowcolor,linecontent, 1))
+			coloraray.insert(Array(nowstyle,linecontent, 1))
 			continue
 		}
 		
 		
 		;This is a normal keyword
 		; Working on multidimentional array is painful ass in AHK
-		coloraray.insert(Array(nowcolor,linecontent, 0))
+		coloraray.insert(Array(nowstyle,linecontent, 0))
 
 	}
 
