@@ -79,9 +79,9 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
                      ; 分號後面可加註解
                      ; ##classname 表示後續文字套 cm-classname 的 CSS style
 ##critical           ; 例如 ##critical 表示後續文字套 cm-critical CSS style
-tumor                ; tumor 關鍵字不分大小寫一律變紅色
+tumor                ; tumor 關鍵字不分大小寫一律套用 cm-critical 樣式
 reg:prominent.*hilum ; "reg:" 前綴，表示後面是 regular expression，配對不分大小寫
-                     ; prominent right hilum、prominent left hilum.... 都會變紅色
+                     ; prominent right hilum、prominent left hilum.... 都套用 cm-critical 樣式
 
 ##info1              ; 這行以後的關鍵字，套用 cm-info1 CSS class
 ```

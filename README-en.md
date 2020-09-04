@@ -83,9 +83,9 @@ The author works in non-IT industry, and has observed that such condition is com
                      ; text after semicolon are comment
                      ; ##classname indicates following keywords use CSS style 'cm-classname'
 ##critical           ; e.g ##critical indicates following keywords use 'cm-critical' CSS style
-tumor                ; "tumor" will turn red regardless of case
+tumor                ; "tumor" will use 'cm-critical' style regardless of case
 reg:prominent.*hilum ; The "reg:" prefix indicates that the following is a regular expression. The matching is case insensitive
-                     ; prominent right hilum、prominent left hilum.... all turn red
+                     ; prominent right hilum、prominent left hilum.... all use 'cm-critical' style
 
 ##info1              ; The keyword after this line will use 'cm-info1' CSS style
 ```
