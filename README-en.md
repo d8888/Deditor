@@ -71,6 +71,7 @@ The author works in non-IT industry, and has observed that such condition is com
 | Ctrl + \[	|Zoom-out    										|
 | Ctrl + Z	|Undo												|
 | Ctrl + Y	|Redo												|
+| Ctrl + F1	|Change theme										|
 | Numpad End|Activate the Deditor window						|
 
 ### Configuration

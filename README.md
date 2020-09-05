@@ -67,6 +67,7 @@ Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫�
 | Ctrl + \[	|文字縮小								|
 | Ctrl + Z	|Undo									|
 | Ctrl + Y	|Redo									|
+| Ctrl + F1	|更改布景主題							|
 | Numpad End|活化 Deditor 窗口						|
 
 ### Configuration
