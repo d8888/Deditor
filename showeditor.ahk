@@ -15,8 +15,8 @@
 DeleteTempFiles()
 DeleteChromeTempFolder()
 
-; Generate theme CSS
-GenMasterCSS("assets", "theme", "temp.css")
+; Generate theme related files
+GenTheme("assets", "theme", "temp.css", "temptheme.js")
 
 ; Generate color rules
 coloraray:=ProcessFilter("colorrule.txt")

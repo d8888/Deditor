@@ -22,7 +22,7 @@ EscapeJSON(line)
 	return line
 }
 
-GenMasterCSS(workdir, searchdir, outfile)
+GenTheme(workdir, searchdir, outfile, outfilejs)
 {
 	cmd:="del """ outfile """"
 	RunWait,%ComSpec% /c %cmd%,,Hide
@@ -32,12 +32,25 @@ GenMasterCSS(workdir, searchdir, outfile)
 	
 	pattern:=rtrim(searchdir,"\") "\*.css"
 	
+	jsvar:=""
+	
 	Loop, Files, %pattern%
 	{
 		fname:= rtrim(StrReplace(searchdir, "\" , "/"),"/") "/" A_LoopFileName
 		css:="@import url(" fname ");`n"
 		FileAppend, %css%, %outfile%
+		
+		stylename:=StrReplace(A_LoopFileName, ".css" , "")
+		if(jsvar!="")
+		{
+			jsvar:=jsvar ", "
+		}
+		jsvar:= jsvar """" stylename """" ":" """" stylename """"
 	}
+	jsvar:= "var listEditorThemes = {" jsvar "};"
+	cmd:="del """ outfilejs """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
+	FileAppend, %jsvar%, %outfilejs%
 
 	SetWorkingDir, %nowdir%
 }
