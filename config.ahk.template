@@ -2,7 +2,7 @@
 editorTitle:="deditormain===="  	
 
 ; Hide original control? false or true. 
-hideOriginalControl:=false
+hideOriginalControl:=true
 
 ; targetExeName: process name to override control, such as notepad.exe
 ; targetControl: control class name as seen in windowspy, such as "Edit1" (textarea in notepad.exe)
