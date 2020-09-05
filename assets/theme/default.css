@@ -1,46 +1,46 @@
-.CodeMirror {
+.cm-s-default.CodeMirror {
 	background-color: #FFFFFF !important;
 	color: #000000 !important;
 	border: none;
 }
 
-.CodeMirror-cursor {
+.cm-s-default .CodeMirror-cursor {
 	border-left: solid thin #000000;
 }
 
-.CodeMirror-focused .CodeMirror-selected {
+.cm-s-default .CodeMirror-focused .CodeMirror-selected {
 	background: #E61410; !important;
 }
 
-span.cm-critical {
+.cm-s-default span.cm-critical {
 	color: #FF0000;
 	font-weight: bold;
 }
 
-span.cm-intervalchange {
+.cm-s-default span.cm-intervalchange {
 	color: #cc6600;
 	font-weight: bold;
 }
 
-span.cm-info {
+.cm-s-default span.cm-info {
 	color: #0000FF;
 	font-weight: bold;
 }
 
-span.cm-info2 {
+.cm-s-default span.cm-info2 {
 	color: #295c93;
 	font-weight: bold;
 }
 
-span.cm-info3 {
+.cm-s-default span.cm-info3 {
 	color: #993366;
 	font-weight: bold;
 }
 
-span.cm-neglect {
+.cm-s-default span.cm-neglect {
 	color: #444444;
 }
 
-span.cm-blank {
+.cm-s-default span.cm-blank {
 	color: #FF0000;
 }

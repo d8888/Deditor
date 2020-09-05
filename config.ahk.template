@@ -1,9 +1,6 @@
 ; DON'T CHANGE THIS unless change title in deditor.html
 editorTitle:="deditormain===="  	
 
-; theme
-editorTheme:="default"
-
 ; Hide original control? false or true. 
 hideOriginalControl:=false
 

@@ -22,6 +22,26 @@ EscapeJSON(line)
 	return line
 }
 
+GenMasterCSS(workdir, searchdir, outfile)
+{
+	cmd:="del """ outfile """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
+	
+	nowdir:=A_WorkingDir
+	SetWorkingDir, %workdir%
+	
+	pattern:=rtrim(searchdir,"\") "\*.css"
+	
+	Loop, Files, %pattern%
+	{
+		fname:= rtrim(StrReplace(searchdir, "\" , "/"),"/") "/" A_LoopFileName
+		css:="@import url(" fname ");`n"
+		FileAppend, %css%, %outfile%
+	}
+
+	SetWorkingDir, %nowdir%
+}
+
 GenJS(coloraray, outfile)
 {
 	cmd:="del """ outfile """"

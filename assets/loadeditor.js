@@ -47,7 +47,7 @@ window.onload = function() {
 	setInterval(function(){ syncCaretPosToTarget(); }, 80);
 
 		
-	
+	editor.setOption("theme", defaultEditorTheme);
 
 	signalInitComplete(1);
 	//setInterval(function(){ console.log("main::alive") }, 10000);
