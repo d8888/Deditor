@@ -1,46 +1,45 @@
-.cm-s-darcula.CodeMirror {
-	background-color: #2B2B2B !important;
-	color: #A9B7C6 !important;
-	border: none;
+/**
+    Name: IntelliJ IDEA darcula theme
+    From IntelliJ IDEA by JetBrains
+ */
+
+.cm-s-darcula  { font-family: Consolas, Menlo, Monaco, 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', monospace, serif;}
+.cm-s-darcula.CodeMirror { background: #2B2B2B; color: #A9B7C6; }
+
+.cm-s-darcula span.cm-neglected { color: #A9B7C6; font-weight: bold;}
+.cm-s-darcula span.cm-info1 { color: #BBB529; font-weight: bold;}
+.cm-s-darcula span.cm-info2 { color: #6897BB; font-weight: bold;}
+.cm-s-darcula span.cm-info3 { color: #CC7832; line-height: 1em; font-weight: bold; }
+.cm-s-darcula span.cm-info6 { color: #9876AA; font-weight: bold;}
+.cm-s-darcula span.cm-info7 { color: #AABBCC; font-weight: bold; }
+.cm-s-darcula span.cm-info8{ color: #FFC66D; font-weight: bold;}
+.cm-s-darcula span.cm-info9 { color: #6A8759; font-weight: bold;}
+.cm-s-darcula span.cm-info10 { color: #61A151; font-weight: bold; }
+.cm-s-darcula span.cm-info11 { color: #CC7832; font-weight: bold;}
+.cm-s-darcula span.cm-critical { color: #BC3F3C; font-weight: bold;}
+.cm-s-darcula span.cm-info12 { color: #629755; font-weight: bold;}
+.cm-s-darcula span.cm-info4 { color: #6897bb; font-weight: bold;}
+.cm-s-darcula span.cm-info5 { color: #A9B7C6; font-weight: bold;}
+.cm-s-darcula span.cm-matchhighlight { color: #FFFFFF; background-color: rgba(50, 89, 48, .7); font-weight: bold;}
+.cm-s-darcula span.cm-searching { color: #FFFFFF; background-color: rgba(61, 115, 59, .7); font-weight: bold;}
+
+.cm-s-darcula .CodeMirror-cursor { border-left: 1px solid #A9B7C6; }
+.cm-s-darcula .CodeMirror-activeline-background { background: #323232; }
+.cm-s-darcula .CodeMirror-gutters { background: #313335; border-right: 1px solid #313335; }
+.cm-s-darcula .CodeMirror-guttermarker { color: #FFEE80; }
+.cm-s-darcula .CodeMirror-guttermarker-subtle { color: #D0D0D0; }
+.cm-s-darcula .CodeMirrir-linenumber { color: #606366; }
+.cm-s-darcula .CodeMirror-matchingbracket { background-color: #3B514D; color: #FFEF28 !important; font-weight: bold; }
+
+.cm-s-darcula div.CodeMirror-selected { background: #214283; }
+
+.CodeMirror-hints.darcula {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  color: #9C9E9E;
+  background-color: #3B3E3F !important;
 }
 
-.cm-s-darcula .CodeMirror-cursor {
-	border-left: solid thin #FFFFFF;
-}
-
-.cm-s-darcula .CodeMirror-focused .CodeMirror-selected {
-	background: #E61410; !important;
-}
-
-.cm-s-darcula span.cm-critical {
-	color: #FF0000;
-	font-weight: bold;
-}
-
-.cm-s-darcula span.cm-intervalchange {
-	color: #cc6600;
-	font-weight: bold;
-}
-
-.cm-s-darcula span.cm-info {
-	color: #00AAFF;
-	font-weight: bold;
-}
-
-.cm-s-darcula span.cm-info2 {
-	color: #497C93;
-	font-weight: bold;
-}
-
-.cm-s-darcula span.cm-info3 {
-	color: #BB5566;
-	font-weight: bold;
-}
-
-.cm-s-darcula span.cm-neglect {
-	color: #A9B7C6;
-}
-
-.cm-s-darcula span.cm-blank {
-	color: #FF0000;
+.CodeMirror-hints.darcula .CodeMirror-hint-active {
+  background-color: #494D4E !important;
+  color: #9C9E9E !important;
 }

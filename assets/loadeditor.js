@@ -64,7 +64,7 @@ function pickTheme()
 		title: 'Select theme',
 		input: 'select',
 		inputOptions: listEditorThemes,
-		inputPlaceholder: 'Select theme',
+		inputValue: 'default',
 		showCancelButton: true,
 		inputValidator: function(value) {
 			return new Promise(function(resolve, reject) {

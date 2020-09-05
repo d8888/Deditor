@@ -11,7 +11,7 @@ reg:[^.]*unremarkable(\.|$)?
 
 
 ; 沒填寫的「空白」
-##blank
+##critical
 _
 
 ;most important rule
@@ -72,7 +72,7 @@ thrombus
 thrombosis
 
 ; interval change
-##intervalchange
+##info4
 enlarging
 enlarge
 enlargement
@@ -95,7 +95,7 @@ regression
 interval change
 
 
-##info
+##info1
 ground glass
 hydrocalyx
 hydrocalyces
@@ -118,7 +118,7 @@ lesion
 infarct
 
 ; specific lung location
-##info
+##info1
 retrocardiac
 perihilar
 suprahilar

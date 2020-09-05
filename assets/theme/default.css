@@ -12,17 +12,17 @@
 	background: #E61410; !important;
 }
 
+.cm-s-default span.cm-neglect {
+	color: #444444;
+}
+
+
 .cm-s-default span.cm-critical {
 	color: #FF0000;
 	font-weight: bold;
 }
 
-.cm-s-default span.cm-intervalchange {
-	color: #cc6600;
-	font-weight: bold;
-}
-
-.cm-s-default span.cm-info {
+.cm-s-default span.cm-info1 {
 	color: #0000FF;
 	font-weight: bold;
 }
@@ -37,10 +37,48 @@
 	font-weight: bold;
 }
 
-.cm-s-default span.cm-neglect {
-	color: #444444;
+.cm-s-default span.cm-info4 {
+	color: #cc6600;
+	font-weight: bold;
 }
 
-.cm-s-default span.cm-blank {
-	color: #FF0000;
+.cm-s-default span.cm-info5 {
+	color: #76FC5B;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info6 {
+	color: #6F68FC;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info7 {
+	color: #E5FC4E;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info8 {
+	color: #FC35C9;
+	font-weight: bold;
+}
+
+
+.cm-s-default span.cm-info9 {
+	color: #6848B0;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info10 {
+	color: #8C5BFC;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info11 {
+	color: #B0254B;
+	font-weight: bold;
+}
+
+.cm-s-default span.cm-info12 {
+	color: #FC4275;
+	font-weight: bold;
 }
