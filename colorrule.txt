@@ -97,6 +97,7 @@ interval change
 
 ##info1
 ground glass
+infiltration
 hydrocalyx
 hydrocalyces
 hydronephrosis
@@ -116,6 +117,8 @@ lymphadenopathy
 thickening
 lesion
 infarct
+indentation
+compression
 
 ; specific lung location
 ##info1
