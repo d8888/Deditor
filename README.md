@@ -1,6 +1,6 @@
 # Video demo
 
-[![影片示範](https://img.youtube.com/vi/y0-UroAVPw8/0.jpg)](https://youtu.be/y0-UroAVPw8)
+[![影片示範](https://img.youtube.com/vi/qqeq5XNxkK4/0.jpg)](https://youtu.be/qqeq5XNxkK4)
 
 Deditor 可幫助文書處理軟體（例如 Windows 內建記事本，VB6 寫的萬年公司報表軟體）加入語法高亮功能（syntax highlighting），且不需修改目標程式。
 

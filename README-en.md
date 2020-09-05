@@ -1,6 +1,6 @@
 # Video demo
 
-[![Video demo](https://img.youtube.com/vi/y0-UroAVPw8/0.jpg)](https://youtu.be/y0-UroAVPw8)
+[![Video demo](https://img.youtube.com/vi/qqeq5XNxkK4/0.jpg)](https://youtu.be/qqeq5XNxkK4)
 
 Deditor can help word processing software (such as the Windows-built-in notepad, or some ancient software written in VB6) to add syntax highlighting without modifying the target program.
 
