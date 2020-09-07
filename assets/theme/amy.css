@@ -1,0 +1,88 @@
+.cm-s-amy {
+	font-family: inconsolata, monospace;
+	letter-spacing: 0.3px;
+	word-spacing: 1px;
+	background: #200020;
+	color: #D0D0FF;
+}
+.cm-s-amy .CodeMirror-lines {
+	padding: 8px 0;
+}
+.cm-s-amy .CodeMirror-gutters {
+	box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.5);
+	background-color: #200020;
+	padding-right: 10px;
+	z-index: 3;
+	border: none;
+}
+.cm-s-amy div.CodeMirror-cursor {
+	border-left: 3px solid #D0D0FF;
+}
+.cm-s-amy .CodeMirror-activeline-background {
+	background: #80000040;
+}
+.cm-s-amy .CodeMirror-selected {
+	background: #80000080;
+}
+
+.cm-s-amy .cm-neglect {
+	color: null;
+}
+
+.cm-s-amy .cm-critical {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.cm-s-amy .cm-info1 {
+	color: #999999;
+	font-weight: bold;
+}
+
+.cm-s-amy .cm-info2 {
+	color: #A080FF;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info3 {
+	color: #50A0A0;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info4 {
+	color: #80B0B0;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info5 {
+	color: #009090;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info6 {
+	color: #A080FF;
+	font-weight: bold;
+}
+
+.cm-s-amy .cm-info7 {
+	color: #999999;
+	font-weight: bold;
+}
+
+.cm-s-amy .cm-info8 {
+	color: #A080FF;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info9 {
+	color: #50A0A0;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info10 {
+	color: #80B0B0;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info11 {
+	color: #009090;
+	font-weight: bold;
+}
+.cm-s-amy .cm-info12 {
+	color: #A080FF;
+	font-weight: bold;
+}

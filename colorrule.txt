@@ -7,8 +7,7 @@ reg:^No.*(change|progression|enlargement)
 reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9])[^\.]*(\.|$)?
 reg:(^|\.)unremarkable[^\.,]*(\.|$)?
 reg:[^.]*unremarkable(\.|$)?
-reg:[\w|\s]*obscured(\.|$)?
-
+reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)?
 
 ; 沒填寫的「空白」
 ##critical
@@ -133,12 +132,11 @@ reg:(Lt|Rt|left|right) lung
 ; specific spine location
 reg:(?<![a-zA-Z0-9])((C|T|L|S)([0-9])+)(?![a-zA-Z0-9])
 
-; descriptive location
-reg:(?<![a-zA-Z0-9])(Lt|Rt|left|right)(?![a-zA-Z0-9])
+
 
 
 ##info2
-renal stone
+reg:(Lt|Rt|bilateral|left|right)\s*(renal|kidney)?\s*(calyceal|pelvic|ureteropelvic junction|((\w|\s)*ureter(al)?)|ureterovesical junction|UVJ)? ?stone
 gallstone
 gallbladder stone
 CBD stone
@@ -198,6 +196,10 @@ reg:(?<![a-zA-Z0-9])NJ(?![a-zA-Z0-9])
 reg:(?<![a-zA-Z0-9])JJ(?![a-zA-Z0-9])
 reg:(?<![a-zA-Z0-9])double.J(?![a-zA-Z0-9])
 reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])CV(C|P)(?![a-zA-Z0-9])
+
+
+; descriptive location
+reg:(?<![a-zA-Z0-9])(Lt|Rt|left|right)(?![a-zA-Z0-9])
 
 # date or breast location
 ##info3
