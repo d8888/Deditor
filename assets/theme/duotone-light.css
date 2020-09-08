@@ -5,15 +5,13 @@ Author: by Bram de Haan, adapted from DuoTone themes by Simurai (http://simurai.
 CodeMirror template by Jan T. Sott (https://github.com/idleberg), adapted by Bram de Haan (https://github.com/atelierbram/)
 */
 
-
-/*
-modified by d8888 (https://github.com/d8888)
-
-*/
+/* 
+	modified by d8888
+*/	
 
 .cm-s-duotone-light.CodeMirror {
 	background: #faf8f5;
-	color: #b29762;
+	color: #063289;
 }
 
 .cm-s-duotone-light div.CodeMirror-selected {
@@ -55,7 +53,9 @@ modified by d8888 (https://github.com/d8888)
 
 /* end cursor */
 
-.cm-s-duotone-light span.cm-info1 {
+
+.cm-s-duotone-light span.cm-info1
+{
 	color: #063289;
 	font-weight: bold;
 }
@@ -69,6 +69,7 @@ modified by d8888 (https://github.com/d8888)
 	color: #063289;
 	font-weight: bold;
 }
+
 
 .cm-s-duotone-light span.cm-info4 {
 	color: #1659df;
@@ -92,11 +93,11 @@ modified by d8888 (https://github.com/d8888)
 	font-weight: bold;
 }
 
-
 .cm-s-duotone-light span.cm-info8 {
 	color: #063289;
 	font-weight: bold;
 }
+
 
 .cm-s-duotone-light span.cm-info9 {
 	color: #1659df;
@@ -123,14 +124,24 @@ modified by d8888 (https://github.com/d8888)
 .cm-s-duotone-light span.cm-bracket,
 .cm-s-duotone-light span.cm-neglect {
 	color: #b6ad9a;
+	font-weight: bold;
 }
 
+
+/* using #f00 red for errors, don't think any of the colorscheme variables will stand out enough, ... maybe by giving it a background-color ... */
+
+
+/* .cm-s-duotone-light span.cm-error { background: #896724; color: #728fcb; } */
 
 .cm-s-duotone-light span.cm-critical{
 	color: #f00;
 	font-weight: bold;
 }
 
+.cm-s-duotone-light span.cm-header {
+	font-weight: normal;
+	font-weight: bold;
+}
 
 .cm-s-duotone-light .CodeMirror-matchingbracket {
 	text-decoration: underline;

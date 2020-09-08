@@ -19,7 +19,7 @@ DeleteChromeTempFolder()
 GenTheme("assets", "theme", "temp.css", "temptheme.js")
 
 ; Generate color rules
-coloraray:=ProcessFilter("colorrule.txt")
+coloraray:=ProcessFilter(FilterFile)
 GenJS(coloraray, "assets\tempjson.js")
 
 ; Tray for debug
