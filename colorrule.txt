@@ -5,8 +5,8 @@
 ; so that the "nodule" can be colored
 reg:^No.*(change|progression|enlargement)
 reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9])[^\.]*(\.|$)?
-reg:(^|\.)unremarkable[^\.,]*(\.|$)?
-reg:[^.]*unremarkable(\.|$)?
+reg:(^|\.)(unremarkable|normal|patent)[^\.,]*(\.|$)?
+reg:[^.]*(unremarkable|normal|patent)(\.|$)?
 reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)?
 
 ; 沒填寫的「空白」
@@ -97,6 +97,7 @@ interval change
 ##info1
 ground glass
 infiltration
+atelectasis
 hydrocalyx
 hydrocalyces
 hydronephrosis
