@@ -10,6 +10,7 @@ info11
 ##info12
 info12
 
+; this is normal text
 ##neglect
 neglect
 

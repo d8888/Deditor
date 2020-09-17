@@ -5,7 +5,7 @@
 .cm-s-colorforth .CodeMirror-linenumber { color: #bababa; }
 .cm-s-colorforth .CodeMirror-cursor { border-left: 1px solid white; }
 
-.cm-s-colorforth span.cm-neglect     { color: #ededed;}
+.cm-s-colorforth span.cm-neglect     { color: #78846f;}
 .cm-s-colorforth span.cm-info1       { color: #00c4ff; font-weight:bold;}
 .cm-s-colorforth span.cm-info2       { color: #ff1c1c; font-weight:bold; }
 .cm-s-colorforth span.cm-info3       { color: #ffd900; font-weight:bold;}

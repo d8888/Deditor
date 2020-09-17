@@ -5,9 +5,9 @@
 ; so that the "nodule" can be colored
 reg:^No.*(change|progression|enlargement)
 reg:(?<![a-zA-Z0-9])(No|no)(?![a-zA-Z0-9])[^\.]*(\.|$)?
-reg:(^|\.)(unremarkable|normal|patent)[^\.,]*(\.|$)?
-reg:[^.]*(unremarkable|normal|patent)(\.|$)?
-reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)?
+reg:(^|\.)(unremarkable|normal|patent)[^\.,]*(\.|$)
+reg:[^.]*(unremarkable|normal|patent)(\.|$)
+reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)
 
 ; 沒填寫的「空白」
 ##critical
@@ -35,10 +35,10 @@ tumor
 metastasis
 metastases
 metastatic
-carcinoma
+reg:\w*carcinoma
 lymphoma
 leukeumia
-sarcoma
+reg:\w*sarcoma
 myeloma
 cancer
 consolidation
@@ -49,9 +49,7 @@ osteolytic
 osteoblastic
 osteosclerotic
 lytic
-pneumothora
-hydrothora
-hemothora
+reg:(pneumo|hydro|hemo)+thora(x|ces)
 malignant
 malignancy
 seeding
