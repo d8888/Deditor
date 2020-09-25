@@ -67,6 +67,7 @@ foreign bodies
 embolism
 thrombus
 thrombosis
+reg:Category\s+[456][abc]?
 
 ; interval change
 ##info4
@@ -200,6 +201,10 @@ reg:((left|right|Lt|Rt).*)?(?<![a-zA-Z0-9])CV(C|P)(?![a-zA-Z0-9])
 ; descriptive location
 reg:(?<![a-zA-Z0-9])(Lt|Rt|left|right)(?![a-zA-Z0-9])
 
-# date or breast location
+; date or breast location
 ##info3
 reg:(\d{1,4}[\/-]){1,2}\d{1,4}(?=$|\D+)
+
+; size or volumemeasurement
+##info5
+reg:((\d+(\.\d+)?\s*)[*xX]?\s*)+\s*(cm|mm|cc|ml)
