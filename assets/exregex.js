@@ -43,17 +43,26 @@
           }
           var begin = match.index + spos;
           var end = match.index + match[0].length + spos;
+		  
+		  
           matches.push([begin, end, i]);
           stack.push([spos, begin, i]);
           stack.push([end, epos, i]);
+		  //if match happens, we should not match another rule in this position
+		  break; 
         }
       }
 
       matches.sort(function (a, b) {
-        a = a[0];
-        b = b[0];
-        return a < b ? -1 : (a > b ? 1 : 0);
+        var a0 = a[0];
+		var a2 = a[2];
+        var b0 = b[0];
+		var b2 = b[2];
+		//when start location of matches differs, the match with lower (close to zero) start location comes first
+		//when matches have same start location, the match with high priority match rule (lower in rule number) comes first
+        return a0 < b0 ? -1 : (a0 > b0 ? 1 : (a2 < b2? -1:(a2 > b2? 1 : 0 ) ) );
       });
+	  console.log(matches);
       return matches;
     }
 
