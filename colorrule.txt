@@ -9,6 +9,11 @@ reg:(^|\.)(unremarkable|normal|patent)[^\.,]*(\.|$)
 reg:[^.]*(unremarkable|normal|patent)(\.|$)
 reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)
 
+; 已知病情
+##info1
+reg:(known|consistent with|compatible with)[\s\w,]+
+reg:(S\/P|Status post)[\s\w,]+
+
 ; 沒填寫的「空白」
 ##critical
 _
@@ -129,6 +134,7 @@ reg:(left|right|bilateral|bil)?\s*(upper|middle|lower)\s*lung\s*(zone)?
 reg:(?<![a-zA-Z0-9])(L|R)(U|M|L)L(?![a-zA-Z0-9])
 reg:(Lt|Rt|left|right) lung
 
+
 ; specific spine location
 reg:(?<![a-zA-Z0-9])((C|T|L|S)([0-9])+)(?![a-zA-Z0-9])
 
@@ -152,7 +158,7 @@ calcific
 
 
 
-; catheter section
+; catheter
 ##info3
 chest tube
 central venous catheter
