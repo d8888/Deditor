@@ -11,8 +11,8 @@ reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)
 
 ; 已知病情
 ##info1
-reg:(known|consistent with|compatible with)[\s\w,]+
-reg:(S\/P|Status post)[\s\w,]+
+reg:(known|consistent with|compatible with)
+reg:(S\/P|Status post)
 
 ; 沒填寫的「空白」
 ##critical
