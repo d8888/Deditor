@@ -1,4 +1,4 @@
-#SingleInstance force
+﻿#SingleInstance force
 #include lib\base64.ahk
 #include lib\helper.ahk
 #include config.ahk
@@ -9,6 +9,8 @@
 lastSameTime:=-1
 block:=0
 AlarmThreshold:=500
+lastX:=-1
+lastY:=-1
 
 ; Create GUI
 Gosub CreateGUI
@@ -76,6 +78,8 @@ return
 
 CheckOK:
 Gui, Show, Hide
+lastX:=-1
+lastY:=-1
 block:=0
 return
 
@@ -83,6 +87,13 @@ return
 
 ShowGuard:
 WinGetPos , X, Y, Width, Height, ahk_exe %targetExeName%
+if(X=lastX and Y=lastY)
+{
+	return
+}
+lastX:=X
+lastY:=Y
+
 ;Rst:=DllCall("user32\MoveWindow", "uint", MyGuiHwnd, "uint", 0, "uint", -60, "uint", 100 , "uint", 100, "int", 1 )
 Y:=Y+30
 Gui, Show, w250 h25 x%X% y%Y%
@@ -91,7 +102,7 @@ return
 
 CreateGUI:
 Gui +HwndMyGuiHwnd	; store the ID of the GUI to the variable MyGuiHwnd
-HelpMsg:= "syncing..." ; Messages
+HelpMsg:= "報告同步異常，暫時封鎖異動" ; Messages
 
 Gui, +AlwaysOnTop 
 Gui, font,s14,Verdana
