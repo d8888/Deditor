@@ -20,7 +20,8 @@ HwndCefParent:=A_Args[2]
 HwndCefParent+=0
 cefpid:=A_Args[3]
 cefpid+=0
-
+HwndMiddleGui:=A_Args[4]
+HwndMiddleGui+=0
 
 if(Hwndcef="" or HwndCefParent="")
 {
@@ -114,7 +115,8 @@ if(ClientWidth=0)
 	oldW:=ClientWidth
 	oldH:=ClientHeight
 	Rst:=DllCall("user32\MoveWindow", "uint", Hwndcef, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
-	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
+	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
+	Rst:=DllCall("user32\MoveWindow", "uint", HwndMiddleGui, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
 
 }
 ; always force redraw of chrome window

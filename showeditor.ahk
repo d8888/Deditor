@@ -71,7 +71,11 @@ while(1)
 	}
 }
 
-
+; create intermediate GUI
+Gui +HwndHwndMiddleGui	; store the ID of the GUI to the variable MyGuiHwnd
+Gui, +AlwaysOnTop 
+Gui,  -Caption -Border -sysmenu
+Gui, Show, w240 h250 x100 y100
 
 ; remove chrome title bar and make chrome always on top
 WinSet, Style,  -0xC40000 , ahk_pid %cefpid%
@@ -85,7 +89,8 @@ if(Hwndcef="")
 	ExitApp
 }
 HwndCefParent := DllCall("user32\GetAncestor", Ptr,Hwndcef, UInt,2, Ptr)
-DllCall( "SetParent", "uint", HwndCefParent, "uint", HwndTargetControlParent, UInt )
+DllCall( "SetParent", "uint", HwndCefParent, "uint", HwndMiddleGui, UInt )
+DllCall( "SetParent", "uint", HwndMiddleGui, "uint", HwndTargetControlParent, UInt )
 
 
 
@@ -95,7 +100,7 @@ SetTimer, DetectChange, 30
 
 ; Show guardian
 FileAppend 1,main.tmp
-Run, %A_AhkPath% lib\syncuipos.ahk %Hwndcef% %HwndCefParent% %cefpid%,,Hide,syncuipospid
+Run, %A_AhkPath% lib\syncuipos.ahk %Hwndcef% %HwndCefParent% %cefpid% %HwndMiddleGui%,,Hide,syncuipospid
 Run, %A_AhkPath% lib\synccontent.ahk %HwndCefParent%,,Hide,synccontentpid
 Run, %A_AhkPath% lib\guard.ahk,,Hide,guardpid
 return

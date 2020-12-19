@@ -18,8 +18,9 @@ FindChrome()
 
 ConstructChromeArgs()
 {
-	; arguments copied from rust alcro crate
 	rst:=""
+	
+	; arguments copied from rust alcro crate
 	rst:=rst " " "--disable-background-networking"
     rst:=rst " " "--disable-background-timer-throttling"
     rst:=rst " " "--disable-backgrounding-occluded-windows"
@@ -28,7 +29,7 @@ ConstructChromeArgs()
     rst:=rst " " "--disable-default-apps"
     rst:=rst " " "--disable-dev-shm-usage"
     rst:=rst " " "--disable-infobars"
-    ;rst:=rst " " "--disable-extensions" <-- cause custom extension fail to start
+    rst:=rst " " "--disable-extensions"
     rst:=rst " " "--disable-features=site-per-process"
     rst:=rst " " "--disable-hang-monitor"
     rst:=rst " " "--disable-ipc-flooding-protection"
@@ -42,15 +43,16 @@ ConstructChromeArgs()
     rst:=rst " " "--no-first-run"
     rst:=rst " " "--no-default-browser-check"
     rst:=rst " " "--safebrowsing-disable-auto-update"
-    rst:=rst " " "--enable-automation"
+    ;rst:=rst " " "--enable-automation" <-- this cause "Chrome is being controlled by automated software"
     rst:=rst " " "--password-store=basic"
     rst:=rst " " "--use-mock-keychain"
 	
 	
 	;launch our own app
 	rst:=rst " " "--user-data-dir=" A_Temp "\chromedata"
-	rst:=rst " " "--silent-launch"
-	rst:=rst " " "--load-and-launch-app=" A_WorkingDir "\assets"
+	;rst:=rst " " "--silent-launch"
+	;rst:=rst " " "--load-and-launch-app=" A_WorkingDir "\assets"
+	rst:=rst " " "--kiosk file:///" A_WorkingDir "\assets\deditor.html"
 	
 	return rst
 }
