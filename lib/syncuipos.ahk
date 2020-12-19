@@ -35,6 +35,12 @@ SetTimer, CheckActivateCEF, 60
 ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
 HwndTargetControlParent := DllCall("user32\GetAncestor", Ptr,HwndTargetControl, UInt,1, Ptr)
 
+if(useSetParent)
+{
+	DllCall( "SetParent", "uint", HwndCefParent, "uint", HwndTargetControlParent, UInt )
+}
+
+
 
 ; shell hook: see this: https://autohotkey.com/board/topic/80644-how-to-hook-on-to-shell-to-receive-its-messages/
 lastActivated:=-1
@@ -61,6 +67,16 @@ showUI:=1
 ; sync cef position
 ControlGetPos , X, Y, ClientWidth, ClientHeight, %targetControl%, ahk_exe %targetExeName%
 errlevel:=ErrorLevel
+
+if(!useSetParent)
+{
+	WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
+	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
+	if(!TargetAlreadyOnTop() && !ChromeOnTop())
+	{
+		showUI:=0
+	}
+}
 
 ; auto hide UI if some controls are visible
 for index, control in AvoidControl
@@ -94,11 +110,22 @@ if(errlevel)
 if(showUI=0)
 {
 	;WinHide, Control hide doesn't work for chrome for unknown reason
-	X:=9000
-	Y:=9000
+	if(!useSetParent)
+	{
+		WinHide, %editorTitle%
+	}else
+	{
+		X:=9000
+		Y:=9000
+	}
+	
+	
 }else
 {
-	
+	if(!useSetParent)
+	{
+		WinShow, %editorTitle%
+	}
 }
 
 if(ClientWidth=0)
@@ -113,6 +140,7 @@ if(ClientWidth=0)
 	oldY:=Y
 	oldW:=ClientWidth
 	oldH:=ClientHeight
+	
 	Rst:=DllCall("user32\MoveWindow", "uint", Hwndcef, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
 	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
 
@@ -156,6 +184,15 @@ if(FileExist("activate2.tmp"))
 }
 return
 
+ChromeOnTop()
+{
+	global lastActivated, HwndCefParent
+	if (lastActivated*1)!=(HwndCefParent*1)
+	{
+		return false
+	}
+	return true
+}
 
 TargetAlreadyOnTop()
 {

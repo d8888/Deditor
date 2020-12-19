@@ -85,7 +85,7 @@ if(Hwndcef="")
 	ExitApp
 }
 HwndCefParent := DllCall("user32\GetAncestor", Ptr,Hwndcef, UInt,2, Ptr)
-DllCall( "SetParent", "uint", HwndCefParent, "uint", HwndTargetControlParent, UInt )
+
 
 
 
