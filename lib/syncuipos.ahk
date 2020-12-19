@@ -115,7 +115,8 @@ if(ClientWidth=0)
 	oldW:=ClientWidth
 	oldH:=ClientHeight
 	Rst:=DllCall("user32\MoveWindow", "uint", Hwndcef, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
-	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
+	; make chrome "overfit" to prevent rendering issue in win10 (right lower window not rendered )when using setParent
+	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", ClientWidth*2 , "uint", ClientWidth*2, "int", 1 ) 
 	Rst:=DllCall("user32\MoveWindow", "uint", HwndMiddleGui, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
 
 }
