@@ -104,6 +104,10 @@ WaitChromePID(title, waitms)
 DeleteTempFiles()
 {
 	DeleteFile("*.tmp")
+	
+	DeleteFile("assets\temptheme.js")
+	DeleteFile("assets\templayout.js")
+	DeleteFile("assets\tempjson.js")
 }
 
 DeleteFile(filename)

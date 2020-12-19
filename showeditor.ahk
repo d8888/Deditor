@@ -53,6 +53,11 @@ cmdstr:="editorsrv.exe"
 Run, %cmdstr%,,Hide,editsrvpid
 ;Run, %cmdstr%,,,editsrvpid
 
+
+; 取得目標 control 並設定 editor
+ControlGetPos , X, Y, ClientWidth, ClientHeight, %targetControl%, ahk_exe %targetExeName%
+GenLayoutParam(ClientWidth, ClientHeight, "assets\templayout.js")
+
 ; Start chrome app
 StartChromeBrowser()
 cefpid:=WaitChromePID(editorTitle, 45000)

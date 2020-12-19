@@ -55,6 +55,18 @@ GenTheme(workdir, searchdir, outfile, outfilejs)
 	SetWorkingDir, %nowdir%
 }
 
+GenLayoutParam(w, h, outfile)
+{
+	cmd:="del """ outfile """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
+	
+	rst := ""
+	rst := rst "var defaultEditorWidth=""" w """;`n"
+	rst := rst "var defaultEditorHeight=""" h """;`n"
+	
+	FileAppend, %rst%, %outfile%
+}
+
 GenJS(coloraray, outfile)
 {
 	cmd:="del """ outfile """"

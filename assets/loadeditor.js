@@ -35,8 +35,9 @@ window.onload = function() {
 	//editor.on("blur", enable_key);
 	//editor.on("focus", disable_key);
 
-	//full screen
-	editor.setOption("fullScreen", true)
+	
+	// defaultEditorWidth, defaultEditorHeight comes from AHK-generated js scripts
+	editor.setSize(defaultEditorWidth, defaultEditorHeight);
 
 	//editor.on("change", syncTextToTarget);
 	editor.on("change", function(cm, changeobj){contentChanged=true; });
