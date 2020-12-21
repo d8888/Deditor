@@ -90,7 +90,7 @@ HwndCefParent := DllCall("user32\GetAncestor", Ptr,Hwndcef, UInt,2, Ptr)
 
 
 ; 監控目標程式有沒有被關掉
-SetTimer, DetectChange, 30
+SetTimer, DetectChange, 300
 
 
 ; Show guardian
@@ -141,12 +141,13 @@ if(!WinExist("ahk_exe " targetExeName))
 if( !ProcessExist(editsrvpid) or 
     !ProcessExist(syncuipospid) or 
 	!ProcessExist(synccontentpid) or 
-	!ProcessExist(guardpid)
+	!ProcessExist(guardpid) or
 	!ProcessExist(cefpid))
 {
 	MsgBox Component crashed, the program will now exit
 	ExitApp
 }	
+
 return
 	
 OnShowConsole:

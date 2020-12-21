@@ -253,7 +253,12 @@ KillProcessName(name)
 
 ProcessExist(PIDOrName){
 	Process,Exist,%PIDOrName%
-	return Errorlevel
+	ret:=Errorlevel
+	if(ret=0)
+	{
+		return false
+	}
+	return true
 }
 
 IsControlVisible(control, target)
