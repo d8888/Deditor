@@ -146,6 +146,7 @@ if(ClientWidth=0)
 {
 	dbg:=X ":" Y
 	
+	
 	oldX:=X
 	oldY:=Y
 	oldW:=ClientWidth
@@ -168,14 +169,6 @@ if(FileExist("activate2.tmp"))
 {
 	DeleteFile("activate2.tmp")
 	
-	OnBeforeActivation()
-	
-	if not TargetAlreadyOnTop()
-	{
-		WinActivate, ahk_exe %targetExeName%
-	}
-	
-	OnDuringActivation()
 
 	; also notifies these control if chrome is to be activated
 	for index, control in ClickWhenActivate
@@ -190,8 +183,6 @@ if(FileExist("activate2.tmp"))
 		}
 	} 
 	
-	
-	OnAfterActivation()
 	
 	return
 }
