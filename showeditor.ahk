@@ -75,7 +75,7 @@ while(1)
 
 ; remove chrome title bar and make chrome always on top
 WinSet, Style,  -0xC40000 , ahk_pid %cefpid%
-;WinSet, AlwaysOnTop , On, ahk_pid %cefpid%
+WinSet, AlwaysOnTop , On, ahk_pid %cefpid%
 
 ; 把 chrome 塞到目標程式
 ControlGet, Hwndcef, Hwnd ,,Chrome Legacy Window, ahk_pid %cefpid%

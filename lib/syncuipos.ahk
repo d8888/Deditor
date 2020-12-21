@@ -12,7 +12,7 @@ oldH:=-1
 oldW:=-1
 
 showUI:=1
-
+overlapped:=false
 
 Hwndcef:=A_Args[1]
 Hwndcef+=0
@@ -29,7 +29,7 @@ if(Hwndcef="" or HwndCefParent="")
 }
 
 ; BUG: SetTimer 好像不會馬上執行
-SetTimer, SyncUIPos, 60
+SetTimer, SyncUIPos, 20
 SetTimer, CheckActivateCEF, 60
 
 ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
@@ -72,13 +72,12 @@ if(!useSetParent)
 {
 	WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
 	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
-	if(!TargetAlreadyOnTop() && !ChromeOnTop())
+	
+	if(overlapped)
 	{
-		if(IsOverlapped())
-		{
-			;showUI:=0
-		}
+		showUI:=0
 	}
+	
 }
 
 ; auto hide UI if some controls are visible
@@ -150,6 +149,8 @@ if(ClientWidth=0)
 }
 ; always force redraw of chrome window
 Rst:=DllCall("user32\RedrawWindow", "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 1 )
+
+
 return
 
 
@@ -158,32 +159,7 @@ CheckActivateCEF:
 if(FileExist("activate2.tmp"))
 {
 	DeleteFile("activate2.tmp")
-	
-	OnBeforeActivation()
-	
-	if not TargetAlreadyOnTop()
-	{
-		WinActivate, ahk_exe %targetExeName%
-	}
-	
-	OnDuringActivation()
-
-	; also notifies these control if chrome is to be activated
-	for index, control in ClickWhenActivate
-	{
-		if(IsControlVisible(control, "ahk_exe" targetExeName))
-		{
-			ControlGetPos , Xt, Yt, wt, ht, %control%, ahk_exe %targetExeName%
-			if(ht>0)
-			{
-				ControlClick , %control%, ahk_exe %targetExeName%,,L,1
-			}
-		}
-	} 
-	
-	DllCall("user32\SetForegroundWindow", Ptr,HwndCefParent)
-	
-	OnAfterActivation()
+	return
 }
 return
 
@@ -255,19 +231,17 @@ IsOverlapped()
 
 OnActivationChange()
 {
-	global lastActivated, targetExeName
+	global lastActivated, targetExeName, HwndCefParent, HwndTargetControlParent
 	global oldX, oldY, oldW, oldH
 	global cefpid
+	global overlapped
 	
-	if(TargetAlreadyOnTop())
+	if(TargetAlreadyOnTop() or ChromeOnTop())
 	{
-		MouseGetPos , mx, my
-		Hwnd:=WinExist("ahk_exe " targetExeName)
-		ScreenToClient(Hwnd, mx, my)
-		if(oldX*1<=mx*1 && mx*1<=oldX*1+oldW*1 && oldY*1<=my*1 && my*1<=oldY*1+oldH*1)
-		{
-			WinActivate,ahk_pid %cefpid%
-		}
+		overlapped:=false
+	}else if(IsOverlapped())
+	{
+		overlapped:=true
 	}
 }
 
