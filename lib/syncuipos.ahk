@@ -74,7 +74,10 @@ if(!useSetParent)
 	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
 	if(!TargetAlreadyOnTop() && !ChromeOnTop())
 	{
-		showUI:=0
+		if(IsOverlapped())
+		{
+			showUI:=0
+		}
 	}
 }
 
@@ -200,6 +203,52 @@ TargetAlreadyOnTop()
 	if (lastActivated*1)!=(HwndTargetControlParent*1)
 	{
 		return false
+	}
+	return true
+}
+
+IsOverlapped()
+{
+	global lastActivated, HwndCefParent, HwndTargetControlParent
+	global oldX, oldY, oldW, oldH
+	
+	WinGetPos, wX, wY, wWidth, wHeight, ahk_id %lastActivated%
+	if(wX="" or lastActivated=-1)
+	{
+		return false
+	}
+	l1x:=wX*1
+	l1y:=wY*1
+	r1x:=wX*1+wWidth*1
+	r1y:=wY*1+wHeight*1
+	
+	WinGetPos , wX, wY, wWidth, wHeight, ahk_id %HwndCefParent%
+	if(wX="")
+	{
+		; window already hidden, use old value
+		l2x:=oldX*1
+		l2y:=oldY*1
+		r2x:=oldX*1+oldW*1
+		r2y:=oldY*1+oldH*1
+	}else
+	{	
+		l2x:=wX*1
+		l2y:=wY*1
+		r2x:=wX*1+wWidth*1
+		r2y:=wY*1+wHeight*1
+	}
+	
+		
+	
+	;If one rectangle is on left side of other 
+    if(l1x >= r2x or l2x >= r1x)
+	{
+        return false
+	}
+    ;If one rectangle is above other 
+    if(l1y >= r2y or l2y >= r1y) 
+	{
+        return false
 	}
 	return true
 }
