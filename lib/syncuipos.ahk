@@ -35,10 +35,6 @@ SetTimer, CheckActivateCEF, 60
 ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
 HwndTargetControlParent := DllCall("user32\GetAncestor", Ptr,HwndTargetControl, UInt,1, Ptr)
 
-if(useSetParent)
-{
-	DllCall( "SetParent", "uint", HwndCefParent, "uint", HwndTargetControlParent, UInt )
-}
 
 
 
@@ -68,25 +64,24 @@ showUI:=1
 ControlGetPos , X, Y, ClientWidth, ClientHeight, %targetControl%, ahk_exe %targetExeName%
 errlevel:=ErrorLevel
 
-if(!useSetParent)
+
+WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
+WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
+
+if(TargetAlreadyOnTop() or ChromeOnTop())
 {
-	WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
-	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
-	
-	if(TargetAlreadyOnTop() or ChromeOnTop())
-	{
-		overlapped:=false
-	}else if(IsOverlapped())
-	{
-		overlapped:=true
-	}
-	
-	if(overlapped)
-	{
-		showUI:=0
-	}
-	
+	overlapped:=false
+}else if(IsOverlapped())
+{
+	overlapped:=true
 }
+
+if(overlapped)
+{
+	showUI:=0
+}
+	
+
 
 ; auto hide UI if some controls are visible
 for index, control in AvoidControl
@@ -120,22 +115,10 @@ if(errlevel)
 if(showUI=0)
 {
 	;WinHide, Control hide doesn't work for chrome for unknown reason
-	if(!useSetParent)
-	{
-		WinHide, %editorTitle%
-	}else
-	{
-		X:=9000
-		Y:=9000
-	}
-	
-	
+	WinHide, %editorTitle%
 }else
 {
-	if(!useSetParent)
-	{
-		WinShow, %editorTitle%
-	}
+	WinShow, %editorTitle%
 }
 
 if(ClientWidth=0)
@@ -144,16 +127,10 @@ if(ClientWidth=0)
 	
 }else if(X!=oldX or Y!=oldY or ClientWidth!=oldW or ClientHeight!=oldH)
 {
-	dbg:=X ":" Y
-	
-	
 	oldX:=X
 	oldY:=Y
 	oldW:=ClientWidth
 	oldH:=ClientHeight
-	
-	Rst:=DllCall("user32\MoveWindow", "uint", Hwndcef, "uint", 0, "uint", 0, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
-	Rst:=DllCall("user32\MoveWindow", "uint", HwndCefParent, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
 
 }
 ; always force redraw of chrome window
