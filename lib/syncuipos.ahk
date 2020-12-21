@@ -73,6 +73,14 @@ if(!useSetParent)
 	WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
 	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
 	
+	if(TargetAlreadyOnTop() or ChromeOnTop())
+	{
+		overlapped:=false
+	}else if(IsOverlapped())
+	{
+		overlapped:=true
+	}
+	
 	if(overlapped)
 	{
 		showUI:=0
@@ -159,6 +167,32 @@ CheckActivateCEF:
 if(FileExist("activate2.tmp"))
 {
 	DeleteFile("activate2.tmp")
+	
+	OnBeforeActivation()
+	
+	if not TargetAlreadyOnTop()
+	{
+		WinActivate, ahk_exe %targetExeName%
+	}
+	
+	OnDuringActivation()
+
+	; also notifies these control if chrome is to be activated
+	for index, control in ClickWhenActivate
+	{
+		if(IsControlVisible(control, "ahk_exe" targetExeName))
+		{
+			ControlGetPos , Xt, Yt, wt, ht, %control%, ahk_exe %targetExeName%
+			if(ht>0)
+			{
+				ControlClick , %control%, ahk_exe %targetExeName%,,L,1
+			}
+		}
+	} 
+	
+	
+	OnAfterActivation()
+	
 	return
 }
 return
@@ -229,21 +263,7 @@ IsOverlapped()
 	return true
 }
 
-OnActivationChange()
-{
-	global lastActivated, targetExeName, HwndCefParent, HwndTargetControlParent
-	global oldX, oldY, oldW, oldH
-	global cefpid
-	global overlapped
-	
-	if(TargetAlreadyOnTop() or ChromeOnTop())
-	{
-		overlapped:=false
-	}else if(IsOverlapped())
-	{
-		overlapped:=true
-	}
-}
+
 
 ShellMessage( wParam,lParam ) 
 {	
@@ -253,6 +273,5 @@ ShellMessage( wParam,lParam )
 	If ( wParam = 4 or wParam = 32772) ;  HSHELL_WINDOWACTIVATED := 4,  HSHELL_RUDEAPPACTIVATED:=32772
 	{
 		lastActivated:=lParam
-		OnActivationChange()
 	}
 }
