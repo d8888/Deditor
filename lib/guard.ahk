@@ -96,7 +96,7 @@ lastY:=Y
 
 ;Rst:=DllCall("user32\MoveWindow", "uint", MyGuiHwnd, "uint", 0, "uint", -60, "uint", 100 , "uint", 100, "int", 1 )
 Y:=Y+30
-Gui, Show, w250 h25 x%X% y%Y%
+Gui, Show, NoActivate w250 h25 x%X% y%Y%
 ;DllCall("SetMenu", uint, WinActive( ahk_exe %targetExeName% ), uint, 0)
 return
 
