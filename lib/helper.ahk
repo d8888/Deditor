@@ -192,6 +192,18 @@ WinToClient(hWnd, ByRef x, ByRef y)
     return true
 }
 
+ScreenToClient(hWnd, ByRef x, ByRef y)
+{
+    VarSetCapacity(pt, 8), NumPut(y, NumPut(x, pt, "int"), "int")
+    if !DllCall("ScreenToClient", "ptr", hWnd, "ptr", &pt)
+	{
+		; MsgBox %ErrorLevel%
+        return false
+	}
+    x := NumGet(pt, 0, "int"), y := NumGet(pt, 4, "int")
+    return true
+}
+
 
 ReadFile(filename, deleteAfterRead, exitIfFail)
 {

@@ -76,7 +76,7 @@ if(!useSetParent)
 	{
 		if(IsOverlapped())
 		{
-			showUI:=0
+			;showUI:=0
 		}
 	}
 }
@@ -253,6 +253,24 @@ IsOverlapped()
 	return true
 }
 
+OnActivationChange()
+{
+	global lastActivated, targetExeName
+	global oldX, oldY, oldW, oldH
+	global cefpid
+	
+	if(TargetAlreadyOnTop())
+	{
+		MouseGetPos , mx, my
+		Hwnd:=WinExist("ahk_exe " targetExeName)
+		ScreenToClient(Hwnd, mx, my)
+		if(oldX*1<=mx*1 && mx*1<=oldX*1+oldW*1 && oldY*1<=my*1 && my*1<=oldY*1+oldH*1)
+		{
+			WinActivate,ahk_pid %cefpid%
+		}
+	}
+}
+
 ShellMessage( wParam,lParam ) 
 {	
 	global lastActivated
@@ -261,5 +279,6 @@ ShellMessage( wParam,lParam )
 	If ( wParam = 4 or wParam = 32772) ;  HSHELL_WINDOWACTIVATED := 4,  HSHELL_RUDEAPPACTIVATED:=32772
 	{
 		lastActivated:=lParam
+		OnActivationChange()
 	}
 }
