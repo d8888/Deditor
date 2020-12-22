@@ -162,7 +162,7 @@ if(FileExist("activate2.tmp"))
 {
 	DeleteFile("activate2.tmp")
 	
-
+	
 	; also notifies these control if chrome is to be activated
 	for index, control in ClickWhenActivate
 	{

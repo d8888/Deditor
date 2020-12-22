@@ -184,7 +184,14 @@ SetEnable(3)
 return
 
 NumpadEnd::
-WinActivate, ahk_exe %targetExeName%
-WinWaitActive, ahk_exe %targetExeName%
-MakeCEFForegroundIfEnabled(HwndCefParent)
+;WinActivate, ahk_exe %targetExeName%
+;WinWaitActive, ahk_exe %targetExeName%
+Enable:=GetEnable()
+if(Enable!=0)
+{
+	WinActivate, ahk_pid %cefpid%
+}
+; MakeCEFForegroundIfEnabled(HwndCefParent)
+flag:=0x10|0x02|0x01
+Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
 return
