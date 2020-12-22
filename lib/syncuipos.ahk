@@ -68,6 +68,8 @@ errlevel:=ErrorLevel
 WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
 WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
 
+
+
 if(TargetAlreadyOnTop() or ChromeOnTop())
 {
 	overlapped:=false
@@ -78,7 +80,7 @@ if(TargetAlreadyOnTop() or ChromeOnTop())
 
 if(overlapped)
 {
-	showUI:=0
+	;showUI:=0
 }
 	
 
@@ -231,7 +233,30 @@ IsOverlapped()
 	return true
 }
 
-
+PosChrome()
+{
+	global HwndCefParent, HwndTargetControlParent
+	if(TargetAlreadyOnTop())
+	{
+		;flag:=0x10|0x02|0x01
+		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		;e:=ErrorLevel
+		;MsgBox %Rst% %e%
+		WinSet, AlwaysOnTop , On,ahk_pid %cefpid%
+	}else if(ChromeOnTop())
+	{
+		WinSet, AlwaysOnTop , On,ahk_pid %cefpid%
+	}
+	{
+		WinSet, AlwaysOnTop , Off,ahk_pid %cefpid%
+		
+		flag:=0x10|0x02|0x01
+		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", HwndTargetControlParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		;e:=ErrorLevel
+		;MsgBox %Rst% %e%
+	}
+}
 
 ShellMessage( wParam,lParam ) 
 {	
@@ -242,4 +267,5 @@ ShellMessage( wParam,lParam )
 	{
 		lastActivated:=lParam
 	}
+	PosChrome()
 }

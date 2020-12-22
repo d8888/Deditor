@@ -75,7 +75,7 @@ while(1)
 
 ; remove chrome title bar and make chrome always on top
 WinSet, Style,  -0xC40000 , ahk_pid %cefpid%
-WinSet, AlwaysOnTop , On, ahk_pid %cefpid%
+;WinSet, AlwaysOnTop , On, ahk_pid %cefpid%
 
 ; hide tray icon of chrome
 ; WS_EX_TOOLWINDOW = 0x00000080L
