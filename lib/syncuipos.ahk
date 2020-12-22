@@ -42,8 +42,13 @@ SetTimer, CheckActivateCEF, 60
 ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
 HwndTargetControlParent := DllCall("user32\GetAncestor", Ptr,HwndTargetControl, UInt,1, Ptr)
 
-
-
+; 防閃爍的背景
+Gui +HwndHwndBG
+Gui, +AlwaysOnTop 
+Gui, -Caption -Border -sysmenu
+Gui, Show, w240 h250 x10 y10, Working overtime is harmful to your health
+Gui, Color, FFFFFF
+DllCall( "SetParent", "uint", HwndBG, "uint", HwndTargetControlParent, UInt )
 
 ; shell hook: see this: https://autohotkey.com/board/topic/80644-how-to-hook-on-to-shell-to-receive-its-messages/
 lastActivated:=-1
@@ -70,6 +75,9 @@ showUI:=1
 ; sync cef position
 ControlGetPos , X, Y, ClientWidth, ClientHeight, %targetControl%, ahk_exe %targetExeName%
 errlevel:=ErrorLevel
+
+
+
 
 WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
 
@@ -120,6 +128,9 @@ if(errlevel)
 	; X, Y value passed into MoveWindow later should be in "client" coord rather than "window" coord
 	WinToClient(Hwnd, X, Y) 
 	
+	; move BG GUI
+	Rst:=DllCall("user32\MoveWindow", "uint", HwndBG, "uint", X, "uint", Y, "uint", ClientWidth , "uint", ClientHeight, "int", 1 )
+	
 	OnApplyMode(X, Y, ClientWidth, ClientHeight)
 
 }else
@@ -160,6 +171,7 @@ CheckActivateCEF:
 ; is there a "windows activation" request? 
 if(FileExist("activate2.tmp"))
 {
+	FileRead, content, activate2.tmp
 	DeleteFile("activate2.tmp")
 	
 	
@@ -176,6 +188,13 @@ if(FileExist("activate2.tmp"))
 		}
 	} 
 	
+	; 延伸用途：裡面有設定背景顏色？
+	if(InStr(content, "#bgcolor:"))
+	{
+		aray := StrSplit(content, ":")
+		color:= aray[2]
+		Gui, Color, %color%
+	}
 	
 	return
 }
@@ -249,8 +268,8 @@ IsOverlapped()
 
 PosChrome()
 {
-	global HwndCefParent, HwndTargetControlParent, cefpid, targetExeName
-	if(WinActive("ahk_exe" targetExeName))
+	global HwndCefParent, HwndTargetControlParent, cefpid, targetExeName, lastActivated, HwndBG
+	if(WinActive("ahk_exe" targetExeName) or lastActivated=HwndBG)
 	{
 		;flag:=0x10|0x02|0x01
 		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", -1, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
