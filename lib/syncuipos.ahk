@@ -115,6 +115,15 @@ for index, control in AvoidControl
 		showUI:=0
 	}
 } 
+for index, win in AvoidWin
+{
+	WinGet, num, Count, ahk_class %win% ahk_exe %targetExeName%
+	if(num)
+	{
+		showUI:=0
+	}
+}
+
 
 ; a "hook" for app-specific UI adjustment here
 OnBeforeShowUI(X, Y, ClientWidth, ClientHeight, showUI)

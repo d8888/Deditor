@@ -25,8 +25,11 @@ SendToTarget:= []
 ; auto hide UI if specified controls are visible
 ; Example: 
 ;	AvoidControl:=["AfxWnd401"]
+;   AvoidWin:=["#32770"]
 
 AvoidControl:=[]
+AvoidWin:=["#32770"]
+
 
 ; Also send a single left mouse click to these controls if chrome is activated
 ; Example
