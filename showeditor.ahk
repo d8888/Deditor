@@ -77,7 +77,7 @@ while(1)
 WinSet, Style,  -0xC40000 , ahk_pid %cefpid%
 ;WinSet, AlwaysOnTop , On, ahk_pid %cefpid%
 
-; hide tray icon of chrome
+; hide taskbar icon of chrome
 ; WS_EX_TOOLWINDOW = 0x00000080L
 WinSet, ExStyle, +0x00000080 , ahk_pid %cefpid%
 

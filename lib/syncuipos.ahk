@@ -40,11 +40,8 @@ ControlGet, HwndTargetControl, Hwnd ,, %targetControl%, ahk_exe %targetExeName%
 HwndTargetControlParent := DllCall("user32\GetAncestor", Ptr,HwndTargetControl, UInt,1, Ptr)
 
 
+SetOwner(HwndCefParent, HwndTargetControlParent)
 
-SetWindowLong := A_PtrSize=8 ? "SetWindowLongPtr" : "SetWindowLong"
-flag:=-8	;GWL_HWNDPARENT
-Rst:=DllCall( SetWindowLong, "Ptr",HwndCefParent, "int", flag, "Ptr", HwndTargetControlParent, "Ptr")
-e:=ErrorLevel
 
 
 WinActivate, ahk_exe %targetExeName%
@@ -170,22 +167,22 @@ if(FileExist("activate2.tmp"))
 	FileRead, content, activate2.tmp
 	DeleteFile("activate2.tmp")
 	
-	clicked:=false
-	; also notifies these control if chrome is to be activated
-	for index, control in ClickWhenActivate
+	if(ClickWhenActivate.MaxIndex()>0)
 	{
-		if(IsControlVisible(control, "ahk_exe" targetExeName))
+		; also notifies these control if chrome is to be activated
+		for index, control in ClickWhenActivate
 		{
-			ControlGetPos , Xt, Yt, wt, ht, %control%, ahk_exe %targetExeName%
-			if(ht>0)
+			if(IsControlVisible(control, "ahk_exe" targetExeName))
 			{
-				ControlClick , %control%, ahk_exe %targetExeName%,,L,1, NA
-				clicked:=true
+				ControlGetPos , Xt, Yt, wt, ht, %control%, ahk_exe %targetExeName%
+				if(ht>0)
+				{
+					
+					ControlClick , %control%, ahk_exe %targetExeName%,,L,1, NA
+				}
 			}
-		}
-	} 
-	if(clicked)
-	{
+			
+		} 
 		WinActivate, ahk_pid %cefpid%
 	}
 	
@@ -193,6 +190,13 @@ if(FileExist("activate2.tmp"))
 }
 return
 
+SetOwner(owned, owner)
+{
+	SetWindowLong := A_PtrSize=8 ? "SetWindowLongPtr" : "SetWindowLong"
+	flag:=-8	;GWL_HWNDPARENT
+	Rst:=DllCall( SetWindowLong, "Ptr",owned, "int", flag, "Ptr", owner, "Ptr")
+
+}
 
 
 ShellMessage( wParam,lParam ) 
@@ -207,3 +211,4 @@ ShellMessage( wParam,lParam )
 
 	
 }
+
