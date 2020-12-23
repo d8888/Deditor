@@ -286,20 +286,26 @@ PosChrome()
 	global HwndCefParent, HwndTargetControlParent, cefpid, targetExeName, lastActivated, HwndBG, prevState
 	if(WinActive("ahk_exe" targetExeName) or lastActivated=HwndBG)
 	{
-		;flag:=0x10|0x02|0x01
-		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", -1, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
-		;e:=ErrorLevel
-		;MsgBox %Rst% %e%
 		WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
-		;FileAppend,0,test.log
+		
+		if(lastActivated=HwndBG)
+		{
+			WinActivate, ahk_pid %cefpid%
+		}
+		
 		prevState:=0
 		
-	}else if(ChromeOnTop())
+	}else if(WinActive("ahk_pid" cefpid))
 	{
-		WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
-		WinActivate, ahk_pid %cefpid%
-		Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
-		
+		if(prevState!=1)
+		{		
+			if(prevState!=0)
+			{
+				WinActivate, ahk_exe %targetExeName%
+			}
+			WinActivate, ahk_pid %cefpid%
+			WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
+		}
 		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", -1, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
 		;FileAppend,1,test.log
 		prevState:=1
