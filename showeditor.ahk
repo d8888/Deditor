@@ -189,9 +189,7 @@ NumpadEnd::
 Enable:=GetEnable()
 if(Enable!=0)
 {
-	WinActivate, ahk_exe %targetExeName%
 	WinActivate, ahk_pid %cefpid%
 }
-; MakeCEFForegroundIfEnabled(HwndCefParent)
 
 return
