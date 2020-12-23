@@ -11,10 +11,6 @@ oldY:=-1
 oldH:=-1
 oldW:=-1
 
-oldWinX:=-1
-oldWinY:=-1
-oldWinH:=-1
-oldWinW:=-1
 
 
 
@@ -51,6 +47,10 @@ Gui, Show, w240 h250 x10 y10, Working overtime is harmful to your health
 Gui, Color, FFFFFF
 DllCall( "SetParent", "uint", HwndBG, "uint", HwndTargetControlParent, UInt )
 
+
+WinActivate, ahk_exe %targetExeName%
+WinActivate, ahk_pid %cefpid%
+
 ; shell hook: see this: https://autohotkey.com/board/topic/80644-how-to-hook-on-to-shell-to-receive-its-messages/
 lastActivated:=-1
 Gui +LastFound
@@ -81,14 +81,14 @@ errlevel:=ErrorLevel
 
 
 WinGetPos , wX, wY, wWidth, wHeight, ahk_exe %targetExeName%
+WinGetPos , cX, cY, cWidth, cHeight, ahk_pid %cefpid%
 
-if(X+wX!=oldWinX or Y+wY!=oldWinY or ClientWidth!=oldWinW or ClientHeight !=oldWinH)
+if(X!="" and wX!="" and cX!="")
 {
-	WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
-	oldWinX:=X+wX
-	oldWinY:=Y+wY
-	oldWinW:=ClientWidth
-	oldWinH:=ClientHeight
+	if(X+wX!=cX or Y+wY!=cY or ClientWidth!=cWidth or ClientHeight !=cHeight)
+	{
+		WinMove, deditormain====,, X+wX, Y+wY , ClientWidth, ClientHeight
+	}
 }
 
 
@@ -151,7 +151,7 @@ if(errlevel)
 
 if(showUI=0)
 {
-	;WinHide, Control hide doesn't work for chrome for unknown reason
+
 	WinHide, %editorTitle%
 }else
 {
@@ -309,7 +309,9 @@ PosChrome()
 		{
 			WinSet, AlwaysOnTop,Off,ahk_pid %cefpid%
 			flag:=0x10|0x02|0x01
+			Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", lastActivated, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
 			Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+			;FileAppend,x,test.log
 		}
 		;FileAppend,2,test.log
 		prevState:=2
