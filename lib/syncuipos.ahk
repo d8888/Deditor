@@ -47,6 +47,11 @@ Gui, Show, w240 h250 x10 y10, Working overtime is harmful to your health
 Gui, Color, FFFFFF
 DllCall( "SetParent", "uint", HwndBG, "uint", HwndTargetControlParent, UInt )
 
+SetWindowLong := A_PtrSize=8 ? "SetWindowLongPtr" : "SetWindowLong"
+flag:=-8	;GWL_HWNDPARENT
+Rst:=DllCall( SetWindowLong, "Ptr",HwndCefParent, "int", flag, "Ptr", HwndTargetControlParent, "Ptr")
+e:=ErrorLevel
+
 
 WinActivate, ahk_exe %targetExeName%
 WinActivate, ahk_pid %cefpid%
@@ -298,13 +303,14 @@ PosChrome()
 	}else if(WinActive("ahk_pid" cefpid))
 	{
 		if(prevState!=1)
-		{		
+		{	
+			WinSet, AlwaysOnTop, On,ahk_pid %cefpid%		
+			
 			if(prevState!=0)
 			{
+				sleep,50
 				WinActivate, ahk_exe %targetExeName%
 			}
-			WinActivate, ahk_pid %cefpid%
-			WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
 		}
 		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", -1, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
 		;FileAppend,1,test.log
@@ -337,5 +343,5 @@ ShellMessage( wParam,lParam )
 	;WinGet, OutputVar, ProcessName, ahk_id %lastActivated%
 	;FileAppend,%lastActivated%:%OutputVar% `r`n,test.log
 	
-	PosChrome()
+	;PosChrome()
 }
