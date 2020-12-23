@@ -28,6 +28,7 @@ HwndCefParent+=0
 cefpid:=A_Args[3]
 cefpid+=0
 
+prevState:=0 ; for posChrome
 
 if(Hwndcef="" or HwndCefParent="")
 {
@@ -205,18 +206,23 @@ if(FileExist("activate2.tmp"))
 		Gui, Color, %color%
 	}
 	
+	
 	return
 }
 return
 
 ChromeOnTop()
 {
-	global lastActivated, HwndCefParent
-	if (lastActivated*1)!=(HwndCefParent*1)
+	global lastActivated, HwndCefParent,Hwndcef
+	if (lastActivated*1)=(HwndCefParent*1)
 	{
-		return false
+		return true
 	}
-	return true
+	if (lastActivated*1)=(Hwndcef*1)
+	{
+		return true
+	}
+	return false
 }
 
 TargetAlreadyOnTop()
@@ -277,7 +283,7 @@ IsOverlapped()
 
 PosChrome()
 {
-	global HwndCefParent, HwndTargetControlParent, cefpid, targetExeName, lastActivated, HwndBG
+	global HwndCefParent, HwndTargetControlParent, cefpid, targetExeName, lastActivated, HwndBG, prevState
 	if(WinActive("ahk_exe" targetExeName) or lastActivated=HwndBG)
 	{
 		;flag:=0x10|0x02|0x01
@@ -285,19 +291,28 @@ PosChrome()
 		;e:=ErrorLevel
 		;MsgBox %Rst% %e%
 		WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
+		;FileAppend,0,test.log
+		prevState:=0
 		
 	}else if(ChromeOnTop())
 	{
 		WinSet, AlwaysOnTop, On,ahk_pid %cefpid%
+		WinActivate, ahk_pid %cefpid%
+		Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		
 		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", -1, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		;FileAppend,1,test.log
+		prevState:=1
 	}else
 	{
-		WinSet, AlwaysOnTop,Off,ahk_pid %cefpid%
-		flag:=0x10|0x02|0x01
-		;Rst:=DllCall("user32\SetWindowPos", "uint", HwndCefParent, "uint", HwndTargetControlParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
-		Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
-		;e:=ErrorLevel
-		;MsgBox %Rst% %e%
+		if(prevState!=2)
+		{
+			WinSet, AlwaysOnTop,Off,ahk_pid %cefpid%
+			flag:=0x10|0x02|0x01
+			Rst:=DllCall("user32\SetWindowPos", "uint", HwndTargetControlParent, "uint", HwndCefParent, "uint", 0, "uint", 0, "uint", 0, "uint", 0, "uint", flag )
+		}
+		;FileAppend,2,test.log
+		prevState:=2
 	}
 }
 
@@ -310,5 +325,9 @@ ShellMessage( wParam,lParam )
 	{
 		lastActivated:=lParam
 	}
+	
+	;WinGet, OutputVar, ProcessName, ahk_id %lastActivated%
+	;FileAppend,%lastActivated%:%OutputVar% `r`n,test.log
+	
 	PosChrome()
 }
