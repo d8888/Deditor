@@ -167,10 +167,11 @@ if(FileExist("activate2.tmp"))
 	FileRead, content, activate2.tmp
 	DeleteFile("activate2.tmp")
 	
-	if(ClickWhenActivate.MaxIndex()>0)
+	
+	if(InStr(content, "DBLCLICK"))
 	{
 		; also notifies these control if chrome is to be activated
-		for index, control in ClickWhenActivate
+		for index, control in AutoNotify
 		{
 			if(IsControlVisible(control, "ahk_exe" targetExeName))
 			{

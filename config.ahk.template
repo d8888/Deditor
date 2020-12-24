@@ -31,11 +31,11 @@ AvoidControl:=[]
 AvoidWin:=["#32770"]
 
 
-; Also send a single left mouse click to these controls if chrome is activated
+; Also send a single left mouse click to these controls if chrome is "double clicked"
 ; Example
-; 	ClickWhenActivate:=["ThunderRT6TextBox1"]
+; 	AutoNotify:=["ThunderRT6TextBox1"]
 
-ClickWhenActivate:=[]
+AutoNotify:=[]
 
 ; File used to determine color
 

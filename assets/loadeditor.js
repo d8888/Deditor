@@ -43,6 +43,7 @@ window.onload = function() {
 	editor.on("cursorActivity", function(){caretSelChanged=true; });
 	editor.on("mousedown", function(){activateEditorWindow();});
 	editor.on("mouseup", function(){activateEditorWindow();});
+	editor.on("dblclick", function(){onDoubleClick();});
 	
 	setInterval(function(){ syncTextToTarget(); }, 80);
 	setInterval(function(){ syncCaretPosToTarget(); }, 80);
@@ -167,6 +168,11 @@ function syncTextToTarget()
 	// force a caret sync
 	caretSelChanged=true;
 	syncCaretPosToTarget();
+}
+function onDoubleClick()
+{
+	sendRequest("activate2","DBLCLICK");
+	window.focus();
 }
 
 function activateEditorWindow()
