@@ -4,6 +4,7 @@ FindChrome()
 	candidate.Push("\Apps\GoogleChromePortable32\App\Chrome-bin\chrome.exe") ; 自帶的乾淨 portable chrome 優先
 	candidate.Push("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
 	candidate.Push(USERPROFILE "\AppData\Local\Google\Chrome\Application\chrome.exe")
+	candidate.Push("C:\Program Files\Google\Chrome\Application\chrome.exe")
 	
 	for index, element in candidate ; 
 	{

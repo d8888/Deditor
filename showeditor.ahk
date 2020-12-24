@@ -79,7 +79,10 @@ WinSet, Style,  -0xC40000 , ahk_pid %cefpid%
 
 ; hide taskbar icon of chrome
 ; WS_EX_TOOLWINDOW = 0x00000080L
+
+WinHide, ahk_pid %cefpid%
 WinSet, ExStyle, +0x00000080 , ahk_pid %cefpid%
+WinShow, ahk_pid %cefpid%
 
 WinActivate, ahk_exe %targetExeName%
 
