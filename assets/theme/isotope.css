@@ -15,19 +15,19 @@
 .cm-s-isotope .CodeMirror-cursor {border-left: 1px solid #c0c0c0 !important;}
 
 .cm-s-isotope span.cm-neglected {color: #3300ff;}
-.cm-s-isotope span.cm-critical {color: #ff0000;}
-.cm-s-isotope span.cm-info1 {color: #cc00ff;}
-.cm-s-isotope span.cm-info2 {color: #33ff00;}
-.cm-s-isotope span.cm-info3 {color: #ff0099;}
-.cm-s-isotope span.cm-info4 {color: #33ff00;}
-.cm-s-isotope span.cm-info5 {color: #0066ff;}
-.cm-s-isotope span.cm-info6 {color: #ff9900;}
-.cm-s-isotope span.cm-info7 {color: #cc00ff;}
-.cm-s-isotope span.cm-info8 {color: #33ff00;}
-.cm-s-isotope span.cm-info9 {color: #ff0099;}
-.cm-s-isotope span.cm-info10 {color: #33ff00;}
-.cm-s-isotope span.cm-info11 {color: #0066ff;}
-.cm-s-isotope span.cm-info12 {color: #ff9900;}
+.cm-s-isotope span.cm-critical {color: #ff0000; font-weight:bold;}
+.cm-s-isotope span.cm-info1 {color: #cc00ff; font-weight:bold;}
+.cm-s-isotope span.cm-info2 {color: #33ff00; font-weight:bold;}
+.cm-s-isotope span.cm-info3 {color: #ff0099; font-weight:bold;}
+.cm-s-isotope span.cm-info4 {color: #33ff00; font-weight:bold;}
+.cm-s-isotope span.cm-info5 {color: #0066ff; font-weight:bold;}
+.cm-s-isotope span.cm-info6 {color: #ff9900; font-weight:bold;}
+.cm-s-isotope span.cm-info7 {color: #cc00ff; font-weight:bold;}
+.cm-s-isotope span.cm-info8 {color: #33ff00; font-weight:bold;}
+.cm-s-isotope span.cm-info9 {color: #ff0099; font-weight:bold;}
+.cm-s-isotope span.cm-info10 {color: #33ff00; font-weight:bold;}
+.cm-s-isotope span.cm-info11 {color: #0066ff; font-weight:bold;}
+.cm-s-isotope span.cm-info12 {color: #ff9900; font-weight:bold;}
 
 
 .cm-s-isotope .CodeMirror-matchingbracket { text-decoration: underline; color: white !important;}
