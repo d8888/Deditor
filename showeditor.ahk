@@ -104,9 +104,13 @@ SetTimer, DetectChange, 300
 
 ; Show guardian
 FileAppend 1,main.tmp
-Run, %A_AhkPath% lib\syncuipos.ahk %Hwndcef% %HwndCefParent% %cefpid%,,Hide,syncuipospid
-Run, %A_AhkPath% lib\synccontent.ahk %HwndCefParent%,,Hide,synccontentpid
-Run, %A_AhkPath% lib\guard.ahk,,Hide,guardpid
+path_syncuipos := GetScript("lib\syncuipos")
+path_synccontent := GetScript("lib\synccontent")
+path_guard := GetScript("lib\guard")
+
+Run, %path_syncuipos% %Hwndcef% %HwndCefParent% %cefpid%,,Hide,syncuipospid
+Run, %path_synccontent% %HwndCefParent%,,Hide,synccontentpid
+Run, %path_guard% ,,Hide,guardpid
 return
 
 

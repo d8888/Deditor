@@ -1,3 +1,15 @@
+GetScript(filepath)
+{
+	exe := filepath ".exe"
+	ahk := filepath ".ahk"
+	if FileExist(exe)
+	{
+		return exe
+	}
+	ret:=A_AhkPath " " ahk
+	return ret
+}
+
 FindChrome()
 {
 	candidate := []
