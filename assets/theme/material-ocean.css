@@ -1,0 +1,126 @@
+/*
+  Name:       material
+  Author:     Mattia Astorino (http://github.com/equinusocio)
+  Website:    https://material-theme.site/
+*/
+
+.cm-s-material-ocean.CodeMirror {
+  background-color: #0F111A;
+  color: #EEFFFF;
+}
+
+.cm-s-material-ocean .CodeMirror-gutters {
+  background: #0F111A;
+  color: #464B5D;
+  border: none;
+}
+
+.cm-s-material-ocean .CodeMirror-guttermarker,
+.cm-s-material-ocean .CodeMirror-guttermarker-subtle,
+.cm-s-material-ocean .CodeMirror-linenumber {
+  color: #464B5D;
+}
+
+.cm-s-material-ocean .CodeMirror-cursor {
+  border-left: 1px solid #FFCC00;
+}
+
+.cm-s-material-ocean div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
+}
+
+.cm-s-material-ocean.CodeMirror-focused div.CodeMirror-selected {
+  background: rgba(113, 124, 180, 0.2);
+}
+
+.cm-s-material-ocean .CodeMirror-line::selection,
+.cm-s-material-ocean .CodeMirror-line>span::selection,
+.cm-s-material-ocean .CodeMirror-line>span>span::selection {
+  background: rgba(128, 203, 196, 0.2);
+}
+
+.cm-s-material-ocean .CodeMirror-line::-moz-selection,
+.cm-s-material-ocean .CodeMirror-line>span::-moz-selection,
+.cm-s-material-ocean .CodeMirror-line>span>span::-moz-selection {
+  background: rgba(128, 203, 196, 0.2);
+}
+
+.cm-s-material-ocean .CodeMirror-activeline-background {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.cm-s-material-ocean .cm-info11 {
+  color: #C792EA;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info1 {
+  color: #89DDFF;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info2 {
+  color: #DECB6B;
+  font-weight: bold;
+}
+
+
+.cm-s-material-ocean .cm-info3 {
+  color: #f07178;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info4 {
+  color: #FFCB6B;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info5 {
+  color: #F78C6C;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info6 {
+  color: #FF5370;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info7 {
+  color: #82AAFF;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info8 {
+  color: #C3E88D;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info9 {
+  color: #f07178;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-neglect {
+  color: #464B5D;
+}
+
+.cm-s-material-ocean .cm-info10 {
+  color: #f07178;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-critical {
+  color: #FF5370;
+  font-weight: bold;
+}
+
+.cm-s-material-ocean .cm-info12 {
+  color: #FFCB6B;
+  font-weight: bold;
+}
+
+
+.cm-s-material-ocean .CodeMirror-matchingbracket {
+  text-decoration: underline;
+  color: white !important;
+}
