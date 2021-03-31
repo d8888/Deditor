@@ -92,7 +92,10 @@ GenJS(coloraray, outfile)
 	}
 	jscontent:= "var grammar = [`n" lines "`n];"
 	
-	FileAppend, %jscontent%, %outfile%
+	tempfile:=outfile ".ansi.tmp"
+	FileAppend, %jscontent%, %tempfile%
+	
+	AnsiFileToUTF8(tempfile, outfile, "big5")
 }
 
 

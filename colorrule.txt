@@ -1,4 +1,4 @@
-; Negate rules, ignore things like "No lung consolidation." "No obvious bony fracture."
+﻿; Negate rules, ignore things like "No lung consolidation." "No obvious bony fracture."
 ; Careful not to obscured "Nodular lesion"
 ##neglect
 ; this rule is to handle things like: No obvious change of LLL nodule
@@ -214,3 +214,16 @@ reg:(\d{1,4}[\/-]){1,2}\d{1,4}(?=$|\D+)
 ; size or volumemeasurement
 ##info5
 reg:((\d+(\.\d+)?\s*)[*xX]?\s*)+\s*(cm|mm|cc|ml)
+
+; 臨床關鍵字
+##info6
+(?<![a-zA-Z0-9])pain(?![a-zA-Z0-9])
+trauma
+injury
+contusion
+laceration
+motorcycle
+(?<![a-zA-Z0-9])car(?![a-zA-Z0-9])
+crush
+車禍
+撞
