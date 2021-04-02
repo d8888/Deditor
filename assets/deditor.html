@@ -7,6 +7,8 @@
 <script src="codemirror/mode/javascript/javascript.js"></script>
 <script src="codemirror/addon/search/search.js"></script>
 <script src="codemirror/addon/dialog/dialog.js"></script>
+<script src="english_word_list.js"></script>
+<script src="spellchecker.js"></script>
 <script src="exregex.js"></script>
 <script src="codemirror/addon/edit/matchbrackets.js"></script>
 <script src="codemirror/addon/search/searchcursor.js"></script>
@@ -51,6 +53,13 @@
   
   .swal2-html-container {
 	text-align: left;
+  }
+
+  .cm-spellerror {
+    text-decoration-style: double;
+    text-decoration-line: underline;
+    text-decoration-color: red;
+    text-decoration-thickness: 0.2em;
   }
   
 </style>
