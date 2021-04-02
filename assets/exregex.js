@@ -16,6 +16,9 @@
   //initialize dictionary
   set_valid_word_list(english_word_list);
 
+  //minimal length of English word to be checked, any word less than this length will not be spell-checked and is always "valid"
+  var min_check_word_length = 3;
+
   //cache for checked words
   var checked_words = {};
 
@@ -28,8 +31,13 @@
 
   CodeMirror.exRegexMode = function (config, ruleset) {
     function checkword(word) {
-      word = String(word).toLowerCase();
+      if(word.length < min_check_word_length)
+      {
+        return true;
+      }
 
+      word = String(word).toLowerCase();
+      
       if(word in checked_words) {
         return checked_words[word];
       }
