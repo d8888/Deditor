@@ -28,7 +28,6 @@ window.onload = function () {
 			"Ctrl-[": function (cm) { setTextSize(textSize - 1); },
 			"Ctrl-Z": function (cm) { performUndo(); },
 			"Ctrl-Y": function (cm) { performRedo(); },
-			"Ctrl-E": function (cm) { showSnippet(); },
 			"Ctrl-F1": function (cm) { pickTheme(); },
 			"Insert": function (cm) { editor.toggleOverwrite(false); },
 			"Tab": function (cm) { cm.replaceSelection(Array(cm.getOption('tabSize')).join("")); },
@@ -51,6 +50,16 @@ window.onload = function () {
 	editor.on("mousedown", function () { activateEditorWindow(); });
 	editor.on("mouseup", function () { activateEditorWindow(); });
 	editor.on("dblclick", function () { onDoubleClick(); });
+	editor.on("keyup", function (cm, event) {
+		//modified from https://stackoverflow.com/questions/13744176/codemirror-autocomplete-after-any-keyup
+		if (!cm.state.completionActive && 
+			event.keyCode != 13 &&
+			((event.keyCode>=65 && event.keyCode<=90)) &&
+			(!event.altKey && !event.shiftKey && !event.ctrlKey)
+			) {        
+			showSnippet();
+		}
+	});
 
 	setInterval(function () { syncTextToTarget(); }, 80);
 	setInterval(function () { syncCaretPosToTarget(); }, 80);
@@ -65,21 +74,24 @@ window.onload = function () {
 
 };
 
-function showSnippet()
-{
+function showSnippet() {
 	//https://codepen.io/_kkeisuke/pen/BJGpqG
-	CodeMirror.showHint(editor, function ()
-	{
+	CodeMirror.showHint(editor, function () {
 		var line = editor.getCursor().line;
-    	var ch = editor.getCursor().ch;
+		var ch = editor.getCursor().ch;
 
-    	var anc = editor.findWordAt({line: line, ch: ch}).anchor.ch;
-    	var head = editor.findWordAt({line: line, ch: ch}).head.ch;
+		var anc = editor.findWordAt({ line: line, ch: ch }).anchor.ch;
+		var head = editor.findWordAt({ line: line, ch: ch }).head.ch;
 
-    	currentWord = editor.getRange({line: line,ch: anc}, {line: line,ch: head});
+		//force a minimal length of current word to show hinting
+		if (head - anc < 3) {
+			return;
+		}
+
+		currentWord = editor.getRange({ line: line, ch: anc }, { line: line, ch: head });
 
 		var list = filterHints(currentWord);
-		
+
 		return {
 			list: list.length ? list : [],
 			from: CodeMirror.Pos(line, anc),
@@ -88,16 +100,22 @@ function showSnippet()
 	}, { completeSingle: false })
 }
 
+function capFirst(string) 
+{
+	if(string.length>0){
+		string = string.charAt(0).toUpperCase() + string.slice(1);
+	}
+    return string;
+}
 
 function filterHints(item) {
 	if (item in hintCache) {
 		return hintCache[item];
 	}
 
-	var key = item.substring(0,3);
+	var key = item.substring(0, 3);
 	var ans = [];
-	if(key in codeHints)
-	{
+	if (key in codeHints) {
 		ans = codeHints[key].filter(function (elem) {
 			return elem.text.indexOf(item) >= 0
 		})
@@ -111,14 +129,17 @@ function loadHints() {
 	//https://codepen.io/_kkeisuke/pen/BJGpqG
 
 	var n = english_word_list.length;
-	for(var i=0;i<n;i++)
-	{
-		var key = english_word_list[i].substring(0,3);
-		if(!(key in codeHints))
-		{
-			codeHints[key]=[];
+	for (var i = 0; i < n; i++) {
+		var key = english_word_list[i].substring(0, 3);
+		var capkey = capFirst(key);
+		if (!(key in codeHints)) {
+			codeHints[key] = [];
+		}
+		if (!(capkey in codeHints)) {
+			codeHints[capkey] = [];
 		}
 		codeHints[key].push({ text: english_word_list[i], displayText: english_word_list[i] })
+		codeHints[capkey].push({ text: capFirst(english_word_list[i]), displayText: capFirst(english_word_list[i])})
 	}
 }
 
