@@ -14,6 +14,7 @@
   "use strict";
 
   //initialize dictionary
+  english_word_list = english_word_list.concat(custom_word_list)
   set_valid_word_list(english_word_list);
 
   //minimal length of English word to be checked, any word less than this length will not be spell-checked and is always "valid"
