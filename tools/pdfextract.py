@@ -13,6 +13,9 @@ files = args.file
 print(files)
 
 wordset = []
+
+wordgroup = {}
+
 for pdffile in files:
     with fitz.open(pdffile) as doc:
         for i, page in enumerate(doc):
@@ -20,8 +23,21 @@ for pdffile in files:
             text = page.getText()
             rst = list(set([x.group().lower() for x in re.finditer( r'([a-zA-Z]{3,})', text)]))
             wordset = itertools.chain(wordset, rst)
+
+            # 詞組
+            rst = list(set([x.group().lower() for x in re.finditer( r'([a-zA-Z]{2,} +){2,4}', text)]))
+            for elem in rst:
+                if not elem in wordgroup:
+                    wordgroup[elem]=1
+                wordgroup[elem]+=1
+            
 print("preparing data for final dumping")            
 wordset = list(set(wordset))
+
+for elem in wordgroup:
+    if wordgroup[elem]>5:
+        wordset.append(elem.strip())
+
 wordset.sort()
 
 print("dumping file....")
