@@ -1,8 +1,8 @@
 # Video demo
 
-[![Video demo](https://img.youtube.com/vi/qqeq5XNxkK4/0.jpg)](https://youtu.be/qqeq5XNxkK4)
+[![Video demo](https://img.youtube.com/vi/VV6W8LjA8tY/0.jpg)](https://youtu.be/VV6W8LjA8tY)
 
-Deditor can help word processing software (such as the Windows-built-in notepad, or some ancient software written in VB6) to add syntax highlighting without modifying the target program.
+Deditor can help word processing software (such as the Windows-built-in notepad, or some ancient software written in VB6) to add syntax highlighting and other functions that modern IDEs commonly have, without modifying the target program. 
 
 
 
@@ -22,9 +22,16 @@ Deditor can help word processing software (such as the Windows-built-in notepad,
 
 ## Background
 
-"Syntax highlighting" can help users quickly see the key points of a large number of texts, reduce the burden on users, and reduce the chance of missing and misreading vital information. However, many ancient software based on outdated technologies (such as Visual Basic 6 and textarea controls) may not necessarily allow modification of the source code to add this feature for technical reasons.
+The author works in a hospital. The input interface of the radiology report input software provided by the hospital is the textarea control of VB6. There is no grammar highlighting, auto-completion, spell checking, theme and other functions commonly found in modern IDEs or word processing software. It is error-prone and cause eye discomfort if prolonged use.
 
-The author works in non-IT industry, and has observed that such condition is common in software designed for corporate internal-use in non-IT industries. This hobby project is developed hoping to solve this common problem.
+It is impractical to request information department to rebuild software in author’s situation. Therefore the author created the program, which is based on Autohotkey script and Codemirror, provides overlay UI with above functionality without needing to modify the original report software. VB6 textarea is upgraded to lightweight IDE immediately after use 
+
+
+Major features:
+1. No need to modify the original report software. The program take care of text synchronization of overlay UI and target report software.
+2. Provide grammar highlighting, auto-completion, spell checking.
+3. Keywords for syntax highlighting and dictionary for auto-completion, spell checking can be customized. The current dictionary uses words derived from radiology textbooks. Keywords for syntax highlighting come from the author’s keyword list used in daily practice. 
+
 
 
 ## QuickStart
@@ -63,10 +70,10 @@ The author works in non-IT industry, and has observed that such condition is com
 ### Default keys
 |Key		|description							            |
 |-----------|---------------------------------------------------|
-| F4		|Move to the first string composed of underscore	|
+| F4		|Move to the first underscore						|
 | F5		|Combine selected text into one paragraph			|
-| Ctrl + ;	|Move to the next string composed of underscore  	|
-| Ctrl + '	|Move to the previous string composed of underscore	|
+| Ctrl + ;	|Move to the next underscore  						|
+| Ctrl + '	|Move to the previous underscore					|
 | Ctrl + ]	|Zoom-in											|
 | Ctrl + \[	|Zoom-out    										|
 | Ctrl + Z	|Undo												|
