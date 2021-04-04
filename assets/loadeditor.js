@@ -11,6 +11,8 @@ var hintCache = {};
 
 window.onload = function () {
 
+	
+
 	CodeMirror.defineExRegexMode("radreport", grammar);
 	//global scope editor
 	editor = CodeMirror.fromTextArea(document.getElementById("code_input"), {
@@ -591,8 +593,8 @@ function findNearestSpace(valstr, startpos) {
 
 function setTextSize(newsize) {
 	textSize = newsize;
-	editor.getWrapperElement().style["font-size"] = textSize + "px";
-	editor.refresh();
+	
+	$("body").css("font-size", textSize+"px"); 
 }
 
 function rewarpSelection() {
