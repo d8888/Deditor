@@ -13,16 +13,32 @@
 })(function (CodeMirror) {
   "use strict";
 
+
+
   //initialize dictionary
   english_word_list = english_word_list.concat(custom_word_list)
-  set_valid_word_list(english_word_list);
+  
+  var slicedDict={};
 
   //minimal length of English word to be checked, any word less than this length will not be spell-checked and is always "valid"
   var min_check_word_length = 3;
 
   //cache for checked words
   var checked_words = {};
+  
+  function loadDict() {
+	//https://codepen.io/_kkeisuke/pen/BJGpqG
 
+	var n = english_word_list.length;
+	for (var i = 0; i < n; i++) {
+	  var key = english_word_list[i].substring(0, 3);
+	  if (!(key in slicedDict)) {
+		slicedDict[key] = {};
+	  }
+	  slicedDict[key][english_word_list[i]]=true;
+    }
+  }
+  loadDict();
 
   CodeMirror.defineExRegexMode = function (name, ruleset) {
     CodeMirror.defineMode(name, function (config) {
@@ -38,13 +54,15 @@
       }
 
       word = String(word).toLowerCase();
+	  
+	  var key = word.substring(0, 3);
+	  
       
       if(word in checked_words) {
         return checked_words[word];
       }
-
-      var aray = find_similar(word, 0.8);
-      var rst = aray[0].includes(word);
+	
+      var rst = key in slicedDict && word in slicedDict[key];
       checked_words[word] = rst;
       return rst;
     }
