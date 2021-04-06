@@ -217,6 +217,9 @@ reg:((\d+(\.\d+)?\s*)[*xX]?\s*)+\s*(cm|mm|cc|ml)
 
 ; 臨床關鍵字
 ##info6
+HCC
+TCC
+UCC
 (?<![a-zA-Z0-9])pain(?![a-zA-Z0-9])
 trauma
 injury
