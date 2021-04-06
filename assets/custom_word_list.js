@@ -13,4 +13,10 @@ var custom_word_list = [
 	"rlq",
 	"luq",
 	"llq",
+	"pcn",
+	"ptgbd",
+	"ptcd",
+	"srs",
+	"img",
+	"ldct",
 ];
