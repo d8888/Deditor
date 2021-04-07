@@ -20,7 +20,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-f','--file', nargs='+', help='input files', required=True)
 args = parser.parse_args()
 files = args.file
-print(files)
 
 
 wordgroup = {}
@@ -51,6 +50,27 @@ for pdffile in files:
 
             
 print("preparing data for final dumping")            
+
+erasekey = []
+
+# erase invalid words such as "nonspeci fic","informa tion"
+for elem in wordgroup:
+    nwords = len(elem.split())
+    if nword==1:
+        continue
+    merged = elem
+    merged = merged.replace(" ","")
+    merged = merged.replace("\r","")
+    merged = merged.replace("\n","")
+    merged = merged.replace("\t","")
+    merged = merged.replace("\v","")
+    merged = merged.replace("\f","")
+    
+    if merged in wordgroup and merged!=elem:
+        erasekey.append(elem)
+
+for key in erasekey:
+    wordgroup.pop(key)
 
 wordset = []
 for elem in wordgroup:
