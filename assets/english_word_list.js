@@ -1,11 +1,3 @@
-/*
-	Reference:
-		Sectional Anatomy by MRI and CT (for anatomical key words)
-		Clinical Vascular Anatomy and Variations
-		Expert imaging - Musculoskeletal Imaging, second edition
-		Radiology Review Manual, 7th Edition
-*/
-
 var english_word_list = [
     "aaa",
     "aaas",

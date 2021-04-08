@@ -19,4 +19,5 @@ var custom_word_list = [
 	"srs",
 	"img",
 	"ldct",
+	"esrd",
 ];
