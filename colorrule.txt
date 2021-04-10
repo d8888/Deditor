@@ -85,6 +85,7 @@ progressing
 progressive
 progression
 stationary
+unstable
 stable
 no change
 limited interval change
