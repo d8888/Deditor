@@ -20,4 +20,5 @@ var custom_word_list = [
 	"img",
 	"ldct",
 	"esrd",
+	"cvc",
 ];
