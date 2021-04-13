@@ -4,7 +4,7 @@
 ; this rule is to handle things like: No obvious change of LLL nodule
 ; so that the "nodule" can be colored
 reg:^No.*(change|progression|enlargement)
-reg:(?<![a-zA-Z0-9])(No|no|deny|denied)(?![a-zA-Z0-9])[\w ,]*(\.|$)?
+reg:(?<![a-zA-Z0-9])(No|no|deny|denied)(?![a-zA-Z0-9])[\w ,><-]*(\.|$)?
 reg:(^|\.)(unremarkable|normal|patent)[^\.,]*(\.|$)
 reg:[^.]*(unremarkable|normal|patent)(\.|$)
 reg:[\w|\s]*(could|can)\s+be\s+obscured(\.|$)
