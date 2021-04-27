@@ -100,22 +100,38 @@
 
           var s3 = Math.max(s1, s2);
           var e3 = Math.min(e1, e2);
+          
           if (s3 < e3) {
-            //has "intersection" of 'spelling error' and 'current match'
+            console.log([s1,e1,s2,e2,s3,e3]);
+            //match 和 spelling error 的字段有交叉
             triggered = true;
             matchtriggered[j] = true;
-            //match 左端有部份沒有 spell error
-            if (s3 > s2) {
+
+            //交叉段左側，有變色沒 spelling error
+            if (s2 < s3) {
               var frag = [s2, s3, token];
               newmatch = newmatch.concat([frag]);
             }
 
+            //交叉段左側，沒變色但有 spelling error
+            if (s1 < s3) {
+              var frag = [s1, s3, "spellerror"];
+              newmatch = newmatch.concat([frag]);
+            }
+
+            // 交叉段，同時有變色和 spelling error
             var frag = [s3, e3, token + " spellerror"];
             newmatch = newmatch.concat([frag]);
 
-            //error 右端有部份在 match 外面
+            //交叉段右側，沒變色但有 spelling error
             if (e1 > e3) {
               var frag = [e3, e1, "spellerror"];
+              newmatch = newmatch.concat([frag]);
+            }
+
+            //交叉段右側，有變色但沒 spelling error
+            if (e2 > e3) {
+              var frag = [e3, e2, token];
               newmatch = newmatch.concat([frag]);
             }
           }
