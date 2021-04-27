@@ -11,7 +11,7 @@ var hintCache = {};
 
 window.onload = function () {
 
-	
+
 
 	CodeMirror.defineExRegexMode("radreport", grammar);
 	//global scope editor
@@ -54,11 +54,11 @@ window.onload = function () {
 	editor.on("dblclick", function () { onDoubleClick(); });
 	editor.on("keyup", function (cm, event) {
 		//modified from https://stackoverflow.com/questions/13744176/codemirror-autocomplete-after-any-keyup
-		if (!cm.state.completionActive && 
+		if (!cm.state.completionActive &&
 			event.keyCode != 13 &&
-			((event.keyCode>=65 && event.keyCode<=90)) &&
+			((event.keyCode >= 65 && event.keyCode <= 90)) &&
 			(!event.altKey && !event.shiftKey && !event.ctrlKey)
-			) {        
+		) {
 			showSnippet();
 		}
 	});
@@ -84,18 +84,16 @@ function getWordUnderCursor() {
 	const regexp = /([a-zA-Z]+)/g;
 	var array = [...lineContent.matchAll(regexp)];
 
-	for(var i=0;i<array.length;i++)
-	{
+	for (var i = 0; i < array.length; i++) {
 		var word = array[i][0];
 		var start = array[i].index;
 		var end = start + word.length;
 
-		if(start<=ch && ch<=end)
-		{
+		if (start <= ch && ch <= end) {
 			return [word, start, end, line];
 		}
 	}
-	return ["",0,0,0];
+	return ["", 0, 0, 0];
 }
 
 function showSnippet() {
@@ -122,12 +120,11 @@ function showSnippet() {
 	}, { completeSingle: false })
 }
 
-function capFirst(string) 
-{
-	if(string.length>0){
+function capFirst(string) {
+	if (string.length > 0) {
 		string = string.charAt(0).toUpperCase() + string.slice(1);
 	}
-    return string;
+	return string;
 }
 
 function filterHints(item) {
@@ -139,8 +136,14 @@ function filterHints(item) {
 	var ans = [];
 	if (key in codeHints) {
 		ans = codeHints[key].filter(function (elem) {
-			return elem.text.indexOf(item) >= 0
-		})
+			if (elem.text.indexOf(item) >= 0) {
+				if (this.count < this.maxResult) {
+					this.count++;
+					return true;
+				}
+			}
+			return false;
+		}, { maxResult: 200, count: 0 })
 	}
 
 	hintCache[item] = ans;
@@ -161,7 +164,7 @@ function loadHints() {
 			codeHints[capkey] = [];
 		}
 		codeHints[key].push({ text: english_word_list[i], displayText: english_word_list[i] })
-		codeHints[capkey].push({ text: capFirst(english_word_list[i]), displayText: capFirst(english_word_list[i])})
+		codeHints[capkey].push({ text: capFirst(english_word_list[i]), displayText: capFirst(english_word_list[i]) })
 	}
 }
 
@@ -613,8 +616,8 @@ function findNearestSpace(valstr, startpos) {
 
 function setTextSize(newsize) {
 	textSize = newsize;
-	
-	$("body").css("font-size", textSize+"px"); 
+
+	$("body").css("font-size", textSize + "px");
 }
 
 function rewarpSelection() {
