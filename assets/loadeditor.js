@@ -76,28 +76,48 @@ window.onload = function () {
 
 };
 
+function getWordUnderCursor() {
+	var line = editor.getCursor().line;
+	var ch = editor.getCursor().ch;
+
+	var lineContent = editor.getLine(line);
+	const regexp = /([a-zA-Z]+)/g;
+	var array = [...lineContent.matchAll(regexp)];
+
+	for(var i=0;i<array.length;i++)
+	{
+		var word = array[i][0];
+		var start = array[i].index;
+		var end = start + word.length;
+
+		if(start<=ch && ch<=end)
+		{
+			return [word, start, end, line];
+		}
+	}
+	return ["",0,0,0];
+}
+
 function showSnippet() {
 	//https://codepen.io/_kkeisuke/pen/BJGpqG
 	CodeMirror.showHint(editor, function () {
-		var line = editor.getCursor().line;
-		var ch = editor.getCursor().ch;
-
-		var anc = editor.findWordAt({ line: line, ch: ch }).anchor.ch;
-		var head = editor.findWordAt({ line: line, ch: ch }).head.ch;
+		var _temp = getWordUnderCursor();
+		currentWord = _temp[0];
+		start = _temp[1];
+		end = _temp[2];
+		line = _temp[3];
 
 		//force a minimal length of current word to show hinting
-		if (head - anc < 3) {
+		if (currentWord.length < 3) {
 			return;
 		}
-
-		currentWord = editor.getRange({ line: line, ch: anc }, { line: line, ch: head });
 
 		var list = filterHints(currentWord);
 
 		return {
 			list: list.length ? list : [],
-			from: CodeMirror.Pos(line, anc),
-			to: CodeMirror.Pos(line, head)
+			from: CodeMirror.Pos(line, start),
+			to: CodeMirror.Pos(line, end)
 		}
 	}, { completeSingle: false })
 }
