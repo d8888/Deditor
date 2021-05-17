@@ -33,6 +33,7 @@ metastatic lymphadenopathy
 ##critical
 fullness
 fibrocalcified
+fibrocalcific
 nodule
 nodular
 mass
