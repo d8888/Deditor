@@ -25,7 +25,6 @@ mediastinum widening
 mediastinal widening
 reg:widening of.*(mediastinum|mediasitnum)
 free air
-pneumoperitoneum
 metastatic lymphadenopathy
 
 
@@ -55,7 +54,7 @@ osteolytic
 osteoblastic
 osteosclerotic
 lytic
-reg:(pneumo|hydro|hemo)+thora(x|ces)
+reg:(pneumo|hydro|hemo)+(thora(x|ces)|mediastinum|peritoneum|retroperitoneum)
 malignant
 malignancy
 seeding
