@@ -19,18 +19,19 @@
 
 .cm-s-midnight span.cm-neglect { color: #428BDD; }
 .cm-s-midnight span.cm-info1 { color: #AE81FF; font-weight:bold;}
-.cm-s-midnight span.cm-info2 { color: #D1EDFF; font-weight:bold;}
+.cm-s-midnight span.cm-info2 { color: #9144dd; font-weight:bold;}
 
 .cm-s-midnight span.cm-info3 { color: #A6E22E; font-weight:bold;}
 .cm-s-midnight span.cm-info4 { color: #E83737; font-weight:bold;}
 .cm-s-midnight span.cm-info5 { color: #1DC116; font-weight:bold;}
 
 .cm-s-midnight span.cm-info6 { color: #FFAA3E; font-weight:bold;}
+.cm-s-midnight span.cm-info7 { color: #8f8feb; font-weight:bold;}
 .cm-s-midnight span.cm-info8 { color: #4DD; font-weight:bold;}
-.cm-s-midnight span.cm-info9 { color: #D1EDFF; font-weight:bold;}
-.cm-s-midnight span.cm-info10 { color: #449; font-weight:bold;}
+.cm-s-midnight span.cm-info9 { color: #9144dd; font-weight:bold;}
+.cm-s-midnight span.cm-info10 { color: #8484c8; font-weight:bold;}
 .cm-s-midnight span.cm-info11 { color: #AE81FF; font-weight:bold;}
-.cm-s-midnight span.cm-info12 { color: #F8F8F0; font-weight:bold;}
+.cm-s-midnight span.cm-info12 { color: #f94326; font-weight:bold;}
 .cm-s-midnight span.cm-critical { color: #F92672; font-weight:bold;}
 
 .cm-s-midnight .CodeMirror-matchingbracket {
