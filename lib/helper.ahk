@@ -182,8 +182,12 @@ CheckTarget(sync2text, nowtarget)
 	global targetExeName, targetControl
 	
 	ControlGetText, text, %targetControl%,ahk_exe %targetExeName%
-	; check if text from CEF is different from current target text, and current target text hasn't been updated unexpectly
+	if(ErrorLevel)
+	{
+		return false
+	}
 	
+	; check if text from CEF is different from current target text, and current target text hasn't been updated unexpectly
 	if(sync2text!=text and nowtarget=text)
 	{
 		return true

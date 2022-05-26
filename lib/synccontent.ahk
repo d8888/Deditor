@@ -65,12 +65,10 @@ if(ErrorLevel)
 	}
 	
 	; use multiple check to prevent from accident overwrite
-	ControlGetText, nowtarget2, %targetControl%,ahk_exe %targetExeName%
-	if(CheckTarget(sync2text, nowtarget2))
+	if(CheckTarget(sync2text, nowtarget))
 	{
 		sleep, 15
-		ControlGetText, nowtarget2, %targetControl%,ahk_exe %targetExeName%
-		if(CheckTarget(sync2text, nowtarget2))
+		if(CheckTarget(sync2text, nowtarget))
 		{
 			ControlSetText, %targetControl%, %sync2text%, ahk_exe %targetExeName%
 			; if ControlSetText fail, nowContent will not be updated and update will be performed again
