@@ -24,11 +24,11 @@ EscapeJSON(line)
 
 GenTheme(workdir, searchdir, outfile, outfilejs)
 {
-	cmd:="del """ outfile """"
-	RunWait,%ComSpec% /c %cmd%,,Hide
-	
 	nowdir:=A_WorkingDir
 	SetWorkingDir, %workdir%
+	
+	cmd:="del """ outfile """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
 	
 	pattern:=rtrim(searchdir,"\") "\*.css"
 	
@@ -57,7 +57,11 @@ GenTheme(workdir, searchdir, outfile, outfilejs)
 
 GenJS(coloraray, outfile)
 {
+	tempfile:=outfile ".ansi.tmp"
+	
 	cmd:="del """ outfile """"
+	RunWait,%ComSpec% /c %cmd%,,Hide
+	cmd:="del """ tempfile """"
 	RunWait,%ComSpec% /c %cmd%,,Hide
 
 	lines:=""
@@ -92,7 +96,6 @@ GenJS(coloraray, outfile)
 	}
 	jscontent:= "var grammar = [`n" lines "`n];"
 	
-	tempfile:=outfile ".ansi.tmp"
 	FileAppend, %jscontent%, %tempfile%
 	
 	AnsiFileToUTF8(tempfile, outfile, "big5")
