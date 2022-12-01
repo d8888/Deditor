@@ -22,6 +22,11 @@ targetLang := "big5"
 
 SendToTarget:= []
 
+; Click specific WinMeny Item if specific key is pressed
+; Example:
+;   SendToTargetWinMenu = [["!a", ["2&"]]]
+SendToTargetWinMenu:= [["!a", ["2&"]]]
+
 ; auto hide UI if specified controls are visible
 ; Example: 
 ;	AvoidControl:=["AfxWnd401"]

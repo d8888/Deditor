@@ -24,6 +24,13 @@ for index, element in SendToTarget
 	Hotkey, %key% , HandleSpecialKey
 } 
 
+for index, element in SendToTargetWinMenu
+{
+	key:= "$" element[1]
+	Hotkey, %key% , HandleWinMenu
+} 
+
+
 
 ; For sync at least once
 Gosub TextToCEF
@@ -172,3 +179,29 @@ if WinActive(editorTitle)
 return
 
 
+HandleWinMenu:
+key:= A_ThisHotkey
+key:= RegExReplace(key, "^\$" , "")
+if WinActive(editorTitle)
+{
+	for index, element in SendToTargetWinMenu
+	{
+		if element[1]=key
+		{
+			if(element[2].MaxIndex()==1)
+			{
+				a:=element[2][1]
+				WinMenuSelectItem, ahk_exe %targetExeName%,, %a%
+			}else if(element[2].MaxIndex()==2)
+			{
+				a:=element[2][1]
+				b:=element[2][2]
+				WinMenuSelectItem, ahk_exe %targetExeName%,, %a%,%b%
+			}
+		}
+	}
+}else
+{
+	Send {%key%}
+}
+return
