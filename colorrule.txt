@@ -235,5 +235,7 @@ crush
 車禍
 撞
 跌倒
+fall
+fell
 fr.
 fx
