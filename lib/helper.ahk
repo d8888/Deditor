@@ -12,20 +12,13 @@ GetScript(filepath)
 
 FindChrome()
 {
-	candidate := []
-	candidate.Push("\Apps\GoogleChromePortable32\App\Chrome-bin\chrome.exe") ; 自帶的乾淨 portable chrome 優先
-	candidate.Push("C:\Program Files (x86)\Google\Chrome\Application\chrome.exe")
-	candidate.Push(USERPROFILE "\AppData\Local\Google\Chrome\Application\chrome.exe")
-	candidate.Push("C:\Program Files\Google\Chrome\Application\chrome.exe")
-	
-	for index, element in candidate ; 
+	path:=".\GoogleChromePortable\App\Chrome-bin\chrome.exe"
+	if(FileExist(path))
 	{
-		if(FileExist(element))
-		{
-			return element
-		}
+		return path
 	}
-	MsgBox Cannot find chrome installation, program will exit!
+	err:="Cannot find Chrome portable executable at " path ". Chrome ver 124 is known to work. New version of Chrome will not work"
+	MsgBox %err%
 	ExitApp
 }
 
